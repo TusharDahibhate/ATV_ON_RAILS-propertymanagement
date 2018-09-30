@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<p id="error"><%= flash[:error] %></p>
+<%= form_for :login, url: login_path do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email%>
+
+  <%= f.label :password %>
+  <%= f.password_field :password%>
+<br><br>
+  <%= f.submit "Log in" %>
+<% end %>
