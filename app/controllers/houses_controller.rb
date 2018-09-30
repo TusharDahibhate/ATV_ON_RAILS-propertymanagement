@@ -12,6 +12,12 @@ class HousesController < ApplicationController
   def show
   end
 
+  def realtorhouses
+    rel = Realtor.find_by(users_id: session[:user_id])
+    @houses = House.where(realtor_id: rel.id)
+    @company = Company.find(rel.companies_id).name
+  end
+
   # GET /houses/new
   def new
     session[:previous_url] = request.referer
@@ -19,6 +25,7 @@ class HousesController < ApplicationController
     @house = House.new
     if !session[:is_admin].nil? && session[:is_admin] == true
       @admin = true
+      @companies = Company.all
     else
       realtor = Realtor.find_by(users_id: session[:user_id])
       if realtor.companies_id != nil
@@ -31,31 +38,28 @@ class HousesController < ApplicationController
 
   # GET /houses/1/edit
   def edit
+    @house = House.find(params[:id])
+    if @house.realtor_id != Realtor.find_by(users_id: session[:user_id])
+      redirect_to houses_path, notice: "You cannot edit listing you have not posted"
+    end
+    #todo: Remove company changing field
+    #todo: Add posted_by in listing
+    # todo: Currently unable to edit house
   end
 
   # POST /houses
   # POST /houses.json
   def create
-    @house = Realtor.find_by(users_id: session[:user_id]).house.new(house_params)
+    @house = House.new(house_params)
+    realtor_id= Realtor.find_by(users_id: session[:user_id])
+    @house.realtor_id= realtor_id.id
+    @house.companies_id = Company.find(realtor_id.companies_id).id
     respond_to do |format|
       if @house.save
-=begin
-todo: Add entries in realtor_huose table | OR | Create new schema for realtor_house.
-        @listing_track = CreateRealtorsHouse.new
-        @listing_track.realtors_id = Realtor.find_by(users_id: session[:user_id])
-        @listing_track.houses_id = @house.id
-        if @listing_track.save
-=end
         format.html {redirect_to houses_path, notice: 'House was successfully created.'}
         format.json {render :show, status: :created, location: @house}
-=begin
-        else
-          format.html {render :new}
-          format.json {render json: @listing_track.errors, status: :unprocessable_entity}
-        end
-=end
       else
-        format.html {render :new}
+        format.html {redirect_to houses_path, notice: 'Error saving house'}
         format.json {render json: @house.errors, status: :unprocessable_entity}
       end
     end
@@ -94,6 +98,6 @@ todo: Add entries in realtor_huose table | OR | Create new schema for realtor_ho
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def house_params
-    params.require(:house).permit(:companies_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name)
+    params.require(:house).permit(:realtor_id,:companies_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name)
   end
 end
