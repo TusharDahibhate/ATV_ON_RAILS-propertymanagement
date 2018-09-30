@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "login#new"
   resources :inquiries
   resources :houses
   resources :househunters
