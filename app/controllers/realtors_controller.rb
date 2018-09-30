@@ -26,6 +26,9 @@ class RealtorsController < ApplicationController
     @realtor = Realtor.find(params[:id])
     @selected = 2
     @companies = Company.all
+    if @realtor.companies_id != nil
+      @company = @realtor.companies_id
+    end
   end
 
   # POST /realtors

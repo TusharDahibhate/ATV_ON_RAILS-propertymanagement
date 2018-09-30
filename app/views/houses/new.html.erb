@@ -5,7 +5,8 @@
     <% options = options_from_collection_for_select(@companies, 'id', 'name') %>
     <%= f.select "companies_id", options %><br><br>
   <% else %>
-    Company: <%= @company %>
+    <%= f.label :location %>
+    <%= f.text_field :location, value: @company, readonly: true  %>
   <% end %>
   <%= f.label :location %>
   <%= f.text_area :location %>

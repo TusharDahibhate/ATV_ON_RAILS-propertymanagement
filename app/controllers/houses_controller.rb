@@ -14,14 +14,19 @@ class HousesController < ApplicationController
 
   # GET /houses/new
   def new
+    session[:previous_url] = request.referer
+    @previous_url = request.referer
     @house = House.new
     if !session[:is_admin].nil? && session[:is_admin] == true
       @admin = true
     else
       realtor = Realtor.find_by(users_id: session[:user_id])
-      @company = Company.find_by(realtor.companies_id)
+      if realtor.companies_id != nil
+        @company = Company.find(realtor.companies_id).name
+      else
+        redirect_to session[:previous_url], notice: "invalid company"
+      end
     end
-    @previous_url = session[:previous_url]
   end
 
   # GET /houses/1/edit
@@ -35,11 +40,11 @@ class HousesController < ApplicationController
 
     respond_to do |format|
       if @house.save
-        format.html { redirect_to session.delete(:previous_url), notice: 'House was successfully created.' }
-        format.json { render :show, status: :created, location: @house }
+        format.html {redirect_to houses_path, notice: 'House was successfully created.'}
+        format.json {render :show, status: :created, location: @house}
       else
-        format.html { render :new }
-        format.json { render json: @house.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @house.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -49,11 +54,11 @@ class HousesController < ApplicationController
   def update
     respond_to do |format|
       if @house.update(house_params)
-        format.html { redirect_to @house, notice: 'House was successfully updated.' }
-        format.json { render :show, status: :ok, location: @house }
+        format.html {redirect_to @house, notice: 'House was successfully updated.'}
+        format.json {render :show, status: :ok, location: @house}
       else
-        format.html { render :edit }
-        format.json { render json: @house.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @house.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -63,19 +68,20 @@ class HousesController < ApplicationController
   def destroy
     @house.destroy
     respond_to do |format|
-      format.html { redirect_to houses_url, notice: 'House was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to houses_url, notice: 'House was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_house
-      @house = House.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def house_params
-      params.require(:house).permit(:companies_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_house
+    @house = House.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def house_params
+    params.require(:house).permit(:companies_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name)
+  end
 end

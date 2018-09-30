@@ -21,6 +21,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
+    session[:previous_url] = request.referer
     @previous_url = session[:previous_url]
   end
 
