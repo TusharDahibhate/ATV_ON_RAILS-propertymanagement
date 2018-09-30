@@ -3,7 +3,7 @@ class CreateRealtors < ActiveRecord::Migration[5.2]
     create_table :realtors do |t|
       t.string :first_name
       t.string :last_name
-      t.integer :integer, :company_id
+      t.integer :company_id
       t.integer :phone_number
       t.references :users, {index: true, foreign_key: true}
       t.references :companies, {index: true, foreign_key: true}
