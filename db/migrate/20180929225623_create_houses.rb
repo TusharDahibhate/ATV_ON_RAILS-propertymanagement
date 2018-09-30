@@ -1,7 +1,7 @@
 class CreateHouses < ActiveRecord::Migration[5.2]
   def change
     create_table :houses do |t|
-      t.integer :company_id
+      t.references :companies, {index: true, foreign_key: true}
       t.text :location
       t.string :area
       t.integer :year_built
@@ -13,6 +13,5 @@ class CreateHouses < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    #add_foreign_key :houses, :companies, column: :company_id, primary_key: :id
   end
 end
