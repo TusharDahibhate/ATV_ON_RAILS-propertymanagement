@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   resources :realtors
   resources :companies
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get    '/login',   to: 'login#new'
+  post   '/login',   to: 'login#create'
+  get '/logout', to: 'login#destroy'
 end

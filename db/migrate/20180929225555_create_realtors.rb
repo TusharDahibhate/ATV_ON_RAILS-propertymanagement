@@ -3,13 +3,12 @@ class CreateRealtors < ActiveRecord::Migration[5.2]
     create_table :realtors do |t|
       t.string :first_name
       t.string :last_name
-      t.integer :company_id
+      t.integer :companies_id
       t.integer :phone_number
-      t.integer :user_id
+      t.references :users, index: true, foreign_key: true
+      t.references :companies, index: true, foreign_key: true
 
       t.timestamps
     end
-    #add_foreign_key :realtors, :users, column: :user_id, primary_key: :id
-    #add_foreign_key :realtors, :companies, column: :company_id, primary_key: :id
   end
 end

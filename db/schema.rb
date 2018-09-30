@@ -29,13 +29,14 @@ ActiveRecord::Schema.define(version: 2018_09_29_230409) do
     t.string "last_name"
     t.integer "phone"
     t.string "contact_method"
-    t.integer "user_id"
+    t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_househunters_on_users_id"
   end
 
   create_table "houses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "companies_id"
     t.text "location"
     t.string "area"
     t.integer "year_built"
@@ -46,30 +47,37 @@ ActiveRecord::Schema.define(version: 2018_09_29_230409) do
     t.string "owner_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["companies_id"], name: "index_houses_on_companies_id"
   end
 
   create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "subject"
     t.text "content"
-    t.integer "user_id"
-    t.integer "house_id"
+    t.bigint "users_id"
+    t.bigint "houses_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["houses_id"], name: "index_inquiries_on_houses_id"
+    t.index ["users_id"], name: "index_inquiries_on_users_id"
   end
 
   create_table "realtors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "company_id"
+    t.bigint "companies_id"
     t.integer "phone_number"
-    t.integer "user_id"
+    t.bigint "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["companies_id"], name: "index_realtors_on_companies_id"
+    t.index ["users_id"], name: "index_realtors_on_users_id"
   end
 
   create_table "realtors_houses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "realtor_id"
-    t.integer "house_id"
+    t.bigint "realtors_id"
+    t.bigint "houses_id"
+    t.index ["houses_id"], name: "index_realtors_houses_on_houses_id"
+    t.index ["realtors_id"], name: "index_realtors_houses_on_realtors_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,4 +90,12 @@ ActiveRecord::Schema.define(version: 2018_09_29_230409) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "househunters", "users", column: "users_id"
+  add_foreign_key "houses", "companies", column: "companies_id"
+  add_foreign_key "inquiries", "houses", column: "houses_id"
+  add_foreign_key "inquiries", "users", column: "users_id"
+  add_foreign_key "realtors", "companies", column: "companies_id"
+  add_foreign_key "realtors", "users", column: "users_id"
+  add_foreign_key "realtors_houses", "houses", column: "houses_id"
+  add_foreign_key "realtors_houses", "realtors", column: "realtors_id"
 end
