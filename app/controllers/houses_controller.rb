@@ -15,6 +15,8 @@ class HousesController < ApplicationController
   # GET /houses/new
   def new
     @house = House.new
+    @companies = Company.all
+    @previous_url = session[:previous_url]
   end
 
   # GET /houses/1/edit
@@ -28,7 +30,7 @@ class HousesController < ApplicationController
 
     respond_to do |format|
       if @house.save
-        format.html { redirect_to @house, notice: 'House was successfully created.' }
+        format.html { redirect_to session.delete(:previous_url), notice: 'House was successfully created.' }
         format.json { render :show, status: :created, location: @house }
       else
         format.html { render :new }
@@ -69,6 +71,6 @@ class HousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def house_params
-      params.require(:house).permit(:company_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name)
+      params.require(:house).permit(:companies_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name)
     end
 end
