@@ -15,7 +15,12 @@ class HousesController < ApplicationController
   # GET /houses/new
   def new
     @house = House.new
-    @companies = Company.all
+    if !session[:is_admin].nil? && session[:is_admin] == true
+      @admin = true
+    else
+      realtor = Realtor.find_by(users_id: session[:user_id])
+      @company = Company.find_by(realtor.companies_id)
+    end
     @previous_url = session[:previous_url]
   end
 

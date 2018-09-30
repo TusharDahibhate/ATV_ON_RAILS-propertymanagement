@@ -1,8 +1,12 @@
 <h1>New House</h1>
 
 <%= form_for @house do |f| %>
-  Company<br>
-
+  <% if @admin == true %>
+    <% options = options_from_collection_for_select(@companies, 'id', 'name') %>
+    <%= f.select "companies_id", options %><br><br>
+  <% else %>
+    Company: <%= @company %>
+  <% end %>
   <%= f.label :location %>
   <%= f.text_area :location %>
   <%= f.label :area %>

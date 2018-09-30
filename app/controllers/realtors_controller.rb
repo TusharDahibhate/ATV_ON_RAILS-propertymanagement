@@ -36,6 +36,7 @@ class RealtorsController < ApplicationController
     @user.is_realtor = true
     respond_to do |format|
       if @user.save
+        @realtor.users_id = @user.id
         if @realtor.save
           format.html {redirect_to @realtor, notice: 'Realtor was successfully created.'}
           format.json {render :show, status: :created, location: @realtor}

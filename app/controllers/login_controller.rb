@@ -12,10 +12,17 @@ class LoginController < ApplicationController
     if user && user.password == params[:login][:password]
       session[:user_id] = user.id
       session[:logged_in] = 'true'
-      session[:is_admin] = user.is_admin
-      session[:is_realtor] = user.is_realtor
-      session[:is_househunter] = user.is_househunter
-      redirect_to user
+      if user.is_admin
+        session[:is_admin]= true
+        redir = "/admin"
+      elsif user.is_realtor
+        session[:is_realtor]= true
+        redir = realtor_path(Realtor.find_by(users_id: user.id).id)
+      elsif user.is_househunter
+        session[:is_househunter]= true
+        redir = "/househunter"
+      end
+      redirect_to redir
     else
       respond_to do |format|
         format.html {redirect_to login_path, flash: {error: 'Invalid Credentials'}}
