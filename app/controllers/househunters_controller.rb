@@ -30,6 +30,7 @@ class HousehuntersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        @househunter.users_id = @user.id
         if @househunter.save
           format.html {redirect_to @househunter, notice: 'Househunter was successfully created.'}
           format.json {render :show, status: :created, location: @househunter}
