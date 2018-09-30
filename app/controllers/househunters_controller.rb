@@ -10,6 +10,7 @@ class HousehuntersController < ApplicationController
   # GET /househunters/1
   # GET /househunters/1.json
   def show
+    @user = User.find(@househunter.users_id)
   end
 
   # GET /househunters/new

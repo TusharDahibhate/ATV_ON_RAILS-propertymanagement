@@ -15,12 +15,12 @@ class LoginController < ApplicationController
       if user.is_admin
         session[:is_admin]= true
         redir = "/admin"
-      elsif user.is_realtor
+      elsif user.is_realtor !=nil
         session[:is_realtor]= true
         redir = realtor_path(Realtor.find_by(users_id: user.id).id)
       elsif user.is_househunter
         session[:is_househunter]= true
-        redir = realtor_path(Househunter.find_by(users_id: user.id).id)
+        redir = househunter_path(Househunter.find_by(users_id: user.id).id)
       end
       redirect_to redir
     else
