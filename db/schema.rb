@@ -64,10 +64,9 @@ ActiveRecord::Schema.define(version: 2018_09_29_230409) do
   create_table "realtors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "company_id"
+    t.bigint "companies_id"
     t.integer "phone_number"
     t.bigint "users_id"
-    t.bigint "companies_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["companies_id"], name: "index_realtors_on_companies_id"

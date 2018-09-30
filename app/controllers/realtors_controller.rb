@@ -10,6 +10,9 @@ class RealtorsController < ApplicationController
   # GET /realtors/1
   # GET /realtors/1.json
   def show
+    @realtor = Realtor.find(params[:id])
+    @company = Company.find(@realtor.companies_id)
+
   end
 
   # GET /realtors/new
@@ -19,6 +22,8 @@ class RealtorsController < ApplicationController
 
   # GET /realtors/1/edit
   def edit
+    @realtor = Realtor.find(params[:id])
+    @companies = Company.all
   end
 
   # POST /realtors
@@ -76,7 +81,7 @@ class RealtorsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def realtor_params
-    params.require(:realtor).permit(:first_name, :last_name, :company_id, :phone_number, :user_id)
+    params.require(:realtor).permit(:first_name, :last_name, :companies_id, :phone_number, :user_id )
   end
 
   #Allows saving of user from within realtors controller.
