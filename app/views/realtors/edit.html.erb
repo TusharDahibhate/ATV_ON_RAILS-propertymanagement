@@ -1,6 +1,17 @@
 <h1>Editing Realtor</h1>
 
-<%= render 'form', realtor: @realtor %>
+<%= form_for @realtor do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <%= f.label :phone_number %>
+  <%= f.number_field :phone_number %><br>
+  Company<br>
+  <% options = options_from_collection_for_select(@companies, 'id', 'name') %>
+  <%= f.select "companies_id",  options %><br><br>
+  <%= f.submit "Update Fields" %>
+<% end %>
 
 <%= link_to 'Show', @realtor %> |
 <%= link_to 'Back', realtors_path %>
