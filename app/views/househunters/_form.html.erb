@@ -4,9 +4,9 @@
       <h2><%= pluralize(househunter.errors.count, "error") %> prohibited this househunter from being saved:</h2>
 
       <ul>
-      <% househunter.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% househunter.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -31,10 +31,6 @@
     <%= form.text_field :contact_method %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>
