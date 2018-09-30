@@ -36,12 +36,24 @@ class HousesController < ApplicationController
   # POST /houses
   # POST /houses.json
   def create
-    @house = House.new(house_params)
-
+    @house = Realtor.find_by(users_id: session[:user_id]).house.new(house_params)
     respond_to do |format|
       if @house.save
+=begin
+todo: Add entries in realtor_huose table | OR | Create new schema for realtor_house.
+        @listing_track = CreateRealtorsHouse.new
+        @listing_track.realtors_id = Realtor.find_by(users_id: session[:user_id])
+        @listing_track.houses_id = @house.id
+        if @listing_track.save
+=end
         format.html {redirect_to houses_path, notice: 'House was successfully created.'}
         format.json {render :show, status: :created, location: @house}
+=begin
+        else
+          format.html {render :new}
+          format.json {render json: @listing_track.errors, status: :unprocessable_entity}
+        end
+=end
       else
         format.html {render :new}
         format.json {render json: @house.errors, status: :unprocessable_entity}
