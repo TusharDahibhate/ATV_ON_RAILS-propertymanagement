@@ -21,6 +21,8 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
+    session[:previous_url] ||= request.referer
+    @previous_url = session[:previous_url]
   end
 
   # POST /companies
@@ -30,7 +32,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to session.delete(:return_to), notice: 'Company was successfully created.' }
+        format.html { redirect_to session.delete(:previous_url), notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }

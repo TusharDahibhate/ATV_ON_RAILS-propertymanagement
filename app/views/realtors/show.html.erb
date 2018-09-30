@@ -12,7 +12,9 @@
 
 <p>
   <strong>Company:</strong>
-  <%= @company.name %>
+  <% if @company != nil %>
+    <%= @company.name %>
+  <% end %>
 </p>
 
 <p>

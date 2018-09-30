@@ -11,8 +11,9 @@ class RealtorsController < ApplicationController
   # GET /realtors/1.json
   def show
     @realtor = Realtor.find(params[:id])
-    @company = Company.find(@realtor.companies_id)
-
+    if @realtor.companies_id != nil
+      @company = Company.find(@realtor.companies_id)
+    end
   end
 
   # GET /realtors/new
@@ -23,6 +24,7 @@ class RealtorsController < ApplicationController
   # GET /realtors/1/edit
   def edit
     @realtor = Realtor.find(params[:id])
+    @selected = 2
     @companies = Company.all
   end
 
