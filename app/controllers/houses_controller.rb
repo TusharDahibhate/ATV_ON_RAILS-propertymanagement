@@ -4,12 +4,25 @@ class HousesController < ApplicationController
   # GET /houses
   # GET /houses.json
   def index
+    session[:previous_url] = request.referer
     @houses = House.all
+    @role = session[:role]
   end
 
   # GET /houses/1
   # GET /houses/1.json
   def show
+    session[:previous_url] = request.referer
+    @company_name = Company.find(House.find(params[:id]).companies_id).name
+    @houseid = params[:id]
+
+  end
+
+  def realtorhouses
+    session[:previous_url] = request.referer
+    rel = Realtor.find_by(users_id: session[:user_id])
+    @houses = House.where(realtor_id: rel.id)
+    @company = Company.find(rel.companies_id).name
   end
 
   # GET /houses/new
@@ -19,9 +32,10 @@ class HousesController < ApplicationController
     @house = House.new
     if !session[:is_admin].nil? && session[:is_admin] == true
       @admin = true
+      @companies = Company.all
     else
       realtor = Realtor.find_by(users_id: session[:user_id])
-      if realtor.companies_id != nil
+      if realtor != nil && realtor.companies_id != nil
         @company = Company.find(realtor.companies_id).name
       else
         redirect_to session[:previous_url], notice: "invalid company"
@@ -31,33 +45,52 @@ class HousesController < ApplicationController
 
   # GET /houses/1/edit
   def edit
+    @house = House.find(params[:id])
+    if !session[:is_admin].nil? && session[:is_admin] == true
+      @admin = true
+      @is_listing_creator = true
+      @companies = Company.all
+    else
+      realtor = Realtor.find_by(users_id: session[:user_id])
+      if realtor.companies_id != nil
+        @company = Company.find(realtor.companies_id).name
+      end
+    end
+    if @house.realtor_id != Realtor.find_by(users_id: session[:user_id]).id
+      redirect_to houses_path, notice: "You cannot edit listing you have not posted"
+    end
+    # todo: Delete extra tables in migrations
   end
 
   # POST /houses
   # POST /houses.json
   def create
-    @house = Realtor.find_by(users_id: session[:user_id]).house.new(house_params)
+    @house = House.new(house_params)
+    realtor = Realtor.find_by(users_id: session[:user_id])
+    @house.realtor_id = realtor.id
+    if session[:role] != "admin"
+      @house.companies_id = realtor.companies_id
+    end
     respond_to do |format|
       if @house.save
-=begin
-todo: Add entries in realtor_huose table | OR | Create new schema for realtor_house.
-        @listing_track = CreateRealtorsHouse.new
-        @listing_track.realtors_id = Realtor.find_by(users_id: session[:user_id])
-        @listing_track.houses_id = @house.id
-        if @listing_track.save
-=end
         format.html {redirect_to houses_path, notice: 'House was successfully created.'}
         format.json {render :show, status: :created, location: @house}
-=begin
-        else
-          format.html {render :new}
-          format.json {render json: @listing_track.errors, status: :unprocessable_entity}
-        end
-=end
       else
-        format.html {render :new}
+        format.html {redirect_to houses_path, notice: 'Error saving house'}
         format.json {render json: @house.errors, status: :unprocessable_entity}
       end
+    end
+  end
+
+  def addimages
+    if session[:role] == "realtor"
+      realtor = Realtor.find_by(users_id: session[:user_id])
+      @house = House.find(params[:id])
+      if realtor.companies_id != @house.companies_id
+        redirect_to realtor_path(realtor.id), notice: "house does not belong to your company" and return
+      end
+    elsif session[:role] == "househunter"
+      redirect_to househunter_path(realtor.id), notice: "Only realtors can add images" and return
     end
   end
 
@@ -78,11 +111,38 @@ todo: Add entries in realtor_huose table | OR | Create new schema for realtor_ho
   # DELETE /houses/1
   # DELETE /houses/1.json
   def destroy
+    if session[:role] != "admin"
+      realtor = Realtor.find_by(users_id: session[:user_id])
+      if realtor == nil || @house.realtor_id != realtor.id
+        redirect_to houses_path, notice: "You cannot delete listing you have not posted"
+      end
+    end
     @house.destroy
     respond_to do |format|
       format.html {redirect_to houses_url, notice: 'House was successfully destroyed.'}
       format.json {head :no_content}
     end
+  end
+
+  def interested
+
+    @househunter = Househunter.find_by(users_id: session[:user_id])
+
+    @interested_househunter = InterestedHousehunter.find_by(:house_id => params[:id], :househunter_id => @househunter.id)
+
+    respond_to do |format|
+      if @interested_househunter
+        format.html {redirect_to request.referer, notice: 'Already present in the interest list!'}
+      else
+        @interested_househunter = InterestedHousehunter.new(:house_id => params[:id], :househunter_id => @househunter.id)
+        if @interested_househunter.save
+          format.html {redirect_to request.referer, notice: 'Successful!'}
+        else
+          format.html {redirect_to request.referer, flash: {error: 'Error'}}
+        end
+      end
+    end
+
   end
 
   private
@@ -94,6 +154,6 @@ todo: Add entries in realtor_huose table | OR | Create new schema for realtor_ho
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def house_params
-    params.require(:house).permit(:companies_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name)
+    params.require(:house).permit(:realtor_id, :companies_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name, images: [])
   end
 end

@@ -54,7 +54,14 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    Realtor.find_by(users_id: @user.id).destroy
+    begin
+      rel= Realtor.find_by(users_id: @user.id)
+      if !rel.nil?
+        rel.destroy
+      end
+    rescue ActiveRecord::RecordNotFound
+
+    end
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
@@ -69,7 +76,7 @@ class UsersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email_id, :password, :is_admin, :is_realtor, :is_househunter)
-    end
+    # def user_params
+    #   params.require(:user).permit(:email_id, :password, :is_admin, :is_realtor, :is_househunter)
+    # end
 end
