@@ -14,7 +14,10 @@ class InquiriesController < ApplicationController
 
   # GET /inquiries/new
   def new
+    @houseid = params[:id]
+    @househunterid = Househunter.find_by(:users_id => session[:user_id])
     @inquiry = Inquiry.new
+
   end
 
   # GET /inquiries/1/edit
@@ -25,15 +28,14 @@ class InquiriesController < ApplicationController
   # POST /inquiries.json
   def create
 
-    @inquiry = Inquiry.new(inquiry_params)
+    @househunter = Househunter.find_by(:id => inquiry_params[:user_id])
+    @inquiry = Inquiry.new(:househunters_id => inquiry_params[:user_id], :houses_id => inquiry_params[:house_id], :content => inquiry_params[:content], :subject => inquiry_params[:subject])
 
     respond_to do |format|
       if @inquiry.save
-        format.html { redirect_to @inquiry, notice: 'Inquiry was successfully created.' }
-        format.json { render :show, status: :created, location: @inquiry }
+        format.html {redirect_to house_path(@househunter), notice: 'Inquiry was successfully created.'}
       else
-        format.html { render :new }
-        format.json { render json: @inquiry.errors, status: :unprocessable_entity }
+        format.html {redirect_to request.referer, notice: 'Error'}
       end
     end
   end

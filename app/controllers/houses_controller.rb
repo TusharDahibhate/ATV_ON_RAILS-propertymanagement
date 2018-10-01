@@ -15,14 +15,18 @@ class HousesController < ApplicationController
     session[:previous_url] = request.referer
     @company_name = Company.find(House.find(params[:id]).companies_id).name
     @houseid = params[:id]
-
+    @role = session[:role]
   end
 
   def realtorhouses
     session[:previous_url] = request.referer
     rel = Realtor.find_by(users_id: session[:user_id])
-    @houses = House.where(realtor_id: rel.id)
-    @company = Company.find(rel.companies_id).name
+    if rel.nil? == true || rel.companies_id == nil
+      redirect_to session[:previous_url]
+    else
+      @houses = House.where(realtor_id: rel.id)
+      @company = Company.find(rel.companies_id).name
+    end
   end
 
   # GET /houses/new

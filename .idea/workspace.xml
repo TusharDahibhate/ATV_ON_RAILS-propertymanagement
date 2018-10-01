@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bfd8d1e3-6da7-441e-ae5e-f796846637a3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/houses/addimages.html.erb" afterDir="false" />
+    <list default="true" id="bfd8d1e3-6da7-441e-ae5e-f796846637a3" name="Default Changelist" comment="Add images to houses belonging to realtor's company">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/houses_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/houses_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/houses/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/houses/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/houses/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/houses/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/houses/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/houses/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Assignment_2_Rails_Ubuntu@Development__PropertyManagement.rcov" NAME="Development: PropertyManagement Coverage Results" MODIFIED="1538352217231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PropertyManagement" />
+    <SUITE FILE_PATH="coverage/Assignment_2_Rails_Ubuntu@Development__PropertyManagement.rcov" NAME="Development: PropertyManagement Coverage Results" MODIFIED="1538372573502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="PropertyManagement" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -89,7 +87,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Gemfile" value="1" />
-          <entry key="erb" value="65" />
+          <entry key="erb" value="66" />
           <entry key="log" value="7" />
           <entry key="rb" value="113" />
           <entry key="sql" value="3" />
@@ -99,7 +97,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Log" value="7" />
-          <entry key="RHTML" value="65" />
+          <entry key="RHTML" value="66" />
           <entry key="Ruby" value="114" />
           <entry key="Scratch" value="3" />
           <entry key="YAML" value="2" />
@@ -107,17 +105,17 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="erb" value="1815" />
-          <entry key="rb" value="54909" />
-          <entry key="txt" value="1293" />
+          <entry key="erb" value="1864" />
+          <entry key="rb" value="55038" />
+          <entry key="txt" value="1355" />
           <entry key="yml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1293" />
-          <entry key="RHTML" value="1815" />
-          <entry key="Ruby" value="54909" />
+          <entry key="PLAIN_TEXT" value="1355" />
+          <entry key="RHTML" value="1864" />
+          <entry key="Ruby" value="55038" />
           <entry key="YAML" value="5" />
         </counts>
       </usages-collector>
@@ -130,8 +128,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/houses_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="89" column="41" selection-start-line="89" selection-start-column="41" selection-end-line="89" selection-end-column="41" />
+            <state relative-caret-position="152">
+              <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/houses/show.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1083">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
             </state>
           </provider>
         </entry>
@@ -157,8 +164,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+            <state relative-caret-position="38">
+              <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -172,11 +179,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/houses/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+            <state relative-caret-position="194">
+              <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -251,12 +258,12 @@
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/app/models/house.rb" />
         <option value="$PROJECT_DIR$/app/views/houses/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/houses/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/houses/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/houses/addimages.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/houses_controller.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/houses/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/houses_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/houses/show.html.erb" />
       </list>
     </option>
   </component>
@@ -373,17 +380,13 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/househunters_controller.rb</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/houses_controller.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/login_controller.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/users_controller.rb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/househunters/_form.html.erb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/househunters/index.html.erb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/househunters/new.html.erb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/controllers/inquiries_controller.rb</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/househunters/show.html.erb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/login/new.html.erb</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/realtors/new.html.erb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/houses/index.html.erb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/houses/show.html.erb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/views/inquiries/_form.html.erb</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/config/routes.rb</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
@@ -392,6 +395,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/models/interested_househunter.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/db/migrate/20181001020859_create_interested_househunters.rb</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/test/fixtures/interested_househunters.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/test/models/interested_househunter_test.rb</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -609,7 +616,7 @@
       <workItem from="1538259781959" duration="2935000" />
       <workItem from="1538266494544" duration="27518000" />
       <workItem from="1538347658307" duration="2848000" />
-      <workItem from="1538350804462" duration="13722000" />
+      <workItem from="1538350804462" duration="18144000" />
     </task>
     <task id="LOCAL-00001" summary="Added realtor registration">
       <created>1538268757295</created>
@@ -723,11 +730,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538363539972</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add images to houses belonging to realtor's company">
+      <created>1538365786734</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1538365786734</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47029000" />
+    <option name="totallyTimeSpent" value="51451000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -742,12 +756,12 @@
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26060605" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26060605" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39542484" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.39542484" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -755,7 +769,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32843137" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49772727" visible="true" weight="0.20261438" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49772727" weight="0.5686275" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5022727" side_tool="true" weight="0.33006537" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32976827" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -835,7 +849,8 @@
     <MESSAGE value="Fixed house display created by a previous merge/rebase" />
     <MESSAGE value="Fixed bug when visiting: house#show -&gt; house#edit" />
     <MESSAGE value="Added required migration for images which was left out" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added required migration for images which was left out" />
+    <MESSAGE value="Add images to houses belonging to realtor's company" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add images to houses belonging to realtor's company" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db/migrate/20180929225748_create_househunters_house.rb" />
@@ -1090,31 +1105,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/houses/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-762">
-          <caret column="2" lean-forward="true" selection-start-column="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/houses/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="29" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/houses_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="89" column="41" selection-start-line="89" selection-start-column="41" selection-end-line="89" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/houses/addimages.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1132,17 +1126,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/houses/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        <state relative-caret-position="194">
+          <caret line="42" column="10" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/houses/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/houses/addimages.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+        <state relative-caret-position="57">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/houses_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/houses/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1083">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
         </state>
       </provider>
     </entry>
