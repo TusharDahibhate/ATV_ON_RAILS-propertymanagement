@@ -2,7 +2,6 @@
 
 <h1>Welcome to Property Management Portal</h1>
 
-<p id="error"><%= flash[:error] %></p>
 <%= form_for :login, url: login_path do |f| %>
   <%= f.label :email %>
   <%= f.email_field :email%>

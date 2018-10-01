@@ -12,17 +12,33 @@ class LoginController < ApplicationController
     if user && user.password == params[:login][:password]
       session[:user_id] = user.id
       session[:logged_in] = 'true'
-      session[:role] = params[:login][:role]
-      if user.is_admin
-        session[:is_admin]= true
+
+      if user.is_admin != nil && user.is_admin == true
+        session[:is_admin] = true
+        if params[:login][:role] == "admin"
+          session[:role] = params[:login][:role]
+        end
         redir = "/admin"
-      elsif user.is_realtor !=nil
-        session[:is_realtor]= true
+      elsif user.is_realtor != nil && user.is_realtor == true
+        session[:is_realtor] = true
+        if params[:login][:role] == "realtor"
+          session[:role] = params[:login][:role]
+        end
         redir = realtor_path(Realtor.find_by(users_id: user.id).id)
-      elsif user.is_househunter
-        session[:is_househunter]= true
+      elsif user.is_househunter != nil && user.is_househunter == true
+        session[:is_househunter] = true
+        if params[:login][:role] == "househunter"
+          session[:role] = params[:login][:role]
+        end
         redir = househunter_path(Househunter.find_by(users_id: user.id).id)
       end
+
+      if session[:role] == nil
+        redir = login_path
+        reset_session
+        flash.notice = "You have not registered for that role"
+      end
+
       redirect_to redir
     else
       respond_to do |format|
@@ -32,7 +48,7 @@ class LoginController < ApplicationController
   end
 
   def destroy
-   reset_session
+    reset_session
     redirect_to login_path
   end
 end

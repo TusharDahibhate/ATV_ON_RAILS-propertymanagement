@@ -5,7 +5,7 @@ class HousesController < ApplicationController
   # GET /houses.json
   def index
     @houses = House.all
-    @u
+    @role = session[:role]
   end
 
   # GET /houses/1
@@ -29,7 +29,7 @@ class HousesController < ApplicationController
       @companies = Company.all
     else
       realtor = Realtor.find_by(users_id: session[:user_id])
-      if realtor.companies_id != nil
+      if realtor != nil && realtor.companies_id != nil
         @company = Company.find(realtor.companies_id).name
       else
         redirect_to session[:previous_url], notice: "invalid company"
@@ -92,6 +92,12 @@ class HousesController < ApplicationController
   # DELETE /houses/1
   # DELETE /houses/1.json
   def destroy
+    if session[:role] != "admin"
+      realtor = Realtor.find_by(users_id: session[:user_id])
+      if realtor == nil || @house.realtor_id != realtor.id
+        redirect_to houses_path, notice: "You cannot delete listing you have not posted"
+      end
+    end
     @house.destroy
     respond_to do |format|
       format.html {redirect_to houses_url, notice: 'House was successfully destroyed.'}
