@@ -31,8 +31,8 @@
     <%#= form.number_field :house_id %>
 <!--  </div>-->
 
-  <%#= form.hidden_field :househunter_id, :value => @post.id %>
-  <%#= form.hidden_field :house_id, :value => @post.id %>
+  <%= form.hidden_field :user_id, :value => @househunterid.id %>
+  <%= form.hidden_field :house_id, :value => @houseid %>
 
   <div class="actions">
     <%= form.submit %>
