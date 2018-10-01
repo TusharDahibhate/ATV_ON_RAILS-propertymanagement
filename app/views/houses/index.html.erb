@@ -35,6 +35,9 @@
         <td><%= link_to 'Edit', edit_house_path(house) %></td>
         <td><%= link_to 'Destroy', house, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       <% end %>
+      <% if @role == "admin" || @role=="realtor" %>
+        <td><%= link_to 'Add image', "/addimage/#{house.id}" %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>

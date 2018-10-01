@@ -4,6 +4,7 @@
 <p id="notice"><%= notice %></p>
 
 <%= form_for @house do |f| %>
+
   Company:
   <% if @admin == true %>
     <% options = options_from_collection_for_select(@companies, 'id', 'name') %>
@@ -26,9 +27,9 @@
   <%= f.label :owner_name %>
   <%= f.text_field :owner_name %><br>
   Basement:  <%= f.check_box :basement %><br>
+  Add MORE images: <br><%= f.file_field :images, multiple: true %><br><br>
 
-
-  <%= f.submit "Create House" %>
+  <%= f.submit "Update House" %>
 <% end %>
 
 

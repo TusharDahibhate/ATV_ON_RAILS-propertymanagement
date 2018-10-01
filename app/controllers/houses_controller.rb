@@ -46,6 +46,7 @@ class HousesController < ApplicationController
     @house = House.find(params[:id])
     if !session[:is_admin].nil? && session[:is_admin] == true
       @admin = true
+      @is_listing_creator = true
       @companies = Company.all
     else
       realtor = Realtor.find_by(users_id: session[:user_id])
@@ -76,6 +77,18 @@ class HousesController < ApplicationController
         format.html {redirect_to houses_path, notice: 'Error saving house'}
         format.json {render json: @house.errors, status: :unprocessable_entity}
       end
+    end
+  end
+
+  def addimages
+    if session[:role] == "realtor"
+      realtor = Realtor.find_by(users_id: session[:user_id])
+      @house = House.find(params[:id])
+      if realtor.companies_id != @house.companies_id
+        redirect_to realtor_path(realtor.id), notice: "house does not belong to your company" and return
+      end
+    elsif session[:role] == "househunter"
+      redirect_to househunter_path(realtor.id), notice: "Only realtors can add images" and return
     end
   end
 
