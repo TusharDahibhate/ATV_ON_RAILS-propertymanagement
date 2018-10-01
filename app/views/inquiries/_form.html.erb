@@ -21,15 +21,18 @@
     <%= form.text_area :content %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :user_id %>
+    <%#= form.number_field :user_id %>
+<!--  </div>-->
 
-  <div class="field">
-    <%= form.label :house_id %>
-    <%= form.number_field :house_id %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :house_id %>
+    <%#= form.number_field :house_id %>
+<!--  </div>-->
+
+  <%#= form.hidden_field :househunter_id, :value => @post.id %>
+  <%#= form.hidden_field :house_id, :value => @post.id %>
 
   <div class="actions">
     <%= form.submit %>

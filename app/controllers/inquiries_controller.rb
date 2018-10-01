@@ -24,6 +24,7 @@ class InquiriesController < ApplicationController
   # POST /inquiries
   # POST /inquiries.json
   def create
+
     @inquiry = Inquiry.new(inquiry_params)
 
     respond_to do |format|

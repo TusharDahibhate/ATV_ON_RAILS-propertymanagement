@@ -14,6 +14,8 @@ class HousesController < ApplicationController
   def show
     session[:previous_url] = request.referer
     @company_name = Company.find(House.find(params[:id]).companies_id).name
+    @houseid = params[:id]
+
   end
 
   def realtorhouses
@@ -120,6 +122,27 @@ class HousesController < ApplicationController
       format.html {redirect_to houses_url, notice: 'House was successfully destroyed.'}
       format.json {head :no_content}
     end
+  end
+
+  def interested
+
+    @househunter = Househunter.find_by(users_id: session[:user_id])
+
+    @interested_househunter = InterestedHousehunter.find_by(:house_id => params[:id], :househunter_id => @househunter.id)
+
+    respond_to do |format|
+      if @interested_househunter
+        format.html {redirect_to request.referer, notice: 'Already present in the interest list!'}
+      else
+        @interested_househunter = InterestedHousehunter.new(:house_id => params[:id], :househunter_id => @househunter.id)
+        if @interested_househunter.save
+          format.html {redirect_to request.referer, notice: 'Successful!'}
+        else
+          format.html {redirect_to request.referer, flash: {error: 'Error'}}
+        end
+      end
+    end
+
   end
 
   private
