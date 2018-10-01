@@ -4,6 +4,9 @@
     <list default="true" id="bfd8d1e3-6da7-441e-ae5e-f796846637a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/realtors_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/realtors_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/realtors/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/realtors/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/realtors/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/realtors/show.html.erb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,9 +88,9 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Gemfile" value="1" />
-          <entry key="erb" value="66" />
+          <entry key="erb" value="68" />
           <entry key="log" value="7" />
-          <entry key="rb" value="115" />
+          <entry key="rb" value="117" />
           <entry key="sql" value="3" />
           <entry key="yml" value="2" />
         </counts>
@@ -95,25 +98,25 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Log" value="7" />
-          <entry key="RHTML" value="66" />
-          <entry key="Ruby" value="116" />
+          <entry key="RHTML" value="68" />
+          <entry key="Ruby" value="118" />
           <entry key="Scratch" value="3" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="erb" value="1864" />
-          <entry key="rb" value="55220" />
-          <entry key="txt" value="1381" />
+          <entry key="erb" value="1882" />
+          <entry key="rb" value="55482" />
+          <entry key="txt" value="1439" />
           <entry key="yml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="1381" />
-          <entry key="RHTML" value="1864" />
-          <entry key="Ruby" value="55220" />
+          <entry key="PLAIN_TEXT" value="1439" />
+          <entry key="RHTML" value="1882" />
+          <entry key="Ruby" value="55482" />
           <entry key="YAML" value="5" />
         </counts>
       </usages-collector>
@@ -124,10 +127,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/companies_controller.rb">
+        <entry file="file://$PROJECT_DIR$/app/controllers/realtors_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+            <state relative-caret-position="190">
+              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+              <folding>
+                <element signature="e#163#206#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,8 +141,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+            <state relative-caret-position="57">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/realtors/show.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/realtors/edit.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -185,16 +209,13 @@
         <option value="$PROJECT_DIR$/app/views/login/signin_html.erb" />
         <option value="$PROJECT_DIR$/app/views/realtors/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/realtors_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/companies_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/models/create_realtors_house.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20180930084411_add_realtor_id_to_houses.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/realtors/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/models/realtor.rb" />
         <option value="$PROJECT_DIR$/app/views/login/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/realtors/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/houses/realtorhouses.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/login_controller.rb" />
         <option value="$PROJECT_DIR$/config/storage.yml" />
@@ -207,6 +228,9 @@
         <option value="$PROJECT_DIR$/app/views/houses/index.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/houses_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/houses/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/realtors/edit.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/realtors_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/realtors/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
       </list>
     </option>
@@ -261,6 +285,19 @@
               <item name="Assignment_2_Rails_Ubuntu" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Assignment_2_Rails_Ubuntu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignment_2_Rails_Ubuntu" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Assignment_2_Rails_Ubuntu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignment_2_Rails_Ubuntu" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="realtors" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -522,7 +559,7 @@
       <workItem from="1538259781959" duration="2935000" />
       <workItem from="1538266494544" duration="27518000" />
       <workItem from="1538347658307" duration="2848000" />
-      <workItem from="1538350804462" duration="19591000" />
+      <workItem from="1538350804462" duration="21353000" />
     </task>
     <task id="LOCAL-00001" summary="Added realtor registration">
       <created>1538268757295</created>
@@ -650,11 +687,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538434752891</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Verify login before each and every controller's actions.">
+      <created>1538436374599</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1538436374599</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52898000" />
+    <option name="totallyTimeSpent" value="54660000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -669,12 +713,12 @@
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26060605" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26060605" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39542484" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.39542484" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -764,7 +808,8 @@
     <MESSAGE value="Added required migration for images which was left out" />
     <MESSAGE value="Add images to houses belonging to realtor's company" />
     <MESSAGE value="Minor changes and upgrades" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor changes and upgrades" />
+    <MESSAGE value="Verify login before each and every controller's actions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Verify login before each and every controller's actions." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db/migrate/20180929225748_create_househunters_house.rb" />
@@ -914,13 +959,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/realtors/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/company.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -931,23 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/realtors_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="44" column="48" selection-start-line="44" selection-start-column="48" selection-end-line="44" selection-end-column="48" />
-          <folding>
-            <element signature="e#163#206#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/realtors/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -1068,10 +1089,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/realtors/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/realtors/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/realtors_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+          <folding>
+            <element signature="e#163#206#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        <state relative-caret-position="57">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>

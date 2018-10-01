@@ -23,6 +23,8 @@ class RealtorsController < ApplicationController
 
   # GET /realtors/1/edit
   def edit
+    puts "----------------------------------------------------------------------"
+    puts session[:previous_url].inspect
     @realtor = Realtor.find(params[:id])
     @selected = 2
     @companies = Company.all
