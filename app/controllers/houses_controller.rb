@@ -11,6 +11,7 @@ class HousesController < ApplicationController
   # GET /houses/1
   # GET /houses/1.json
   def show
+    @company_name = Company.find(House.find(params[:id]).companies_id).name
   end
 
   def realtorhouses
@@ -61,8 +62,11 @@ class HousesController < ApplicationController
   # POST /houses.json
   def create
     @house = House.new(house_params)
-    realtor_id = Realtor.find_by(users_id: session[:user_id])
-    @house.realtor_id = realtor_id.id
+    realtor = Realtor.find_by(users_id: session[:user_id])
+    @house.realtor_id = realtor.id
+    if session[:role] != "admin"
+      @house.companies_id = realtor.companies_id
+    end
     respond_to do |format|
       if @house.save
         format.html {redirect_to houses_path, notice: 'House was successfully created.'}
