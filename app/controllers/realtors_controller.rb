@@ -11,8 +11,9 @@ class RealtorsController < ApplicationController
   # GET /realtors/1.json
   def show
     @realtor = Realtor.find(params[:id])
-    @company = Company.find(@realtor.companies_id)
-
+    if @realtor.companies_id != nil
+      @company = Company.find(@realtor.companies_id)
+    end
   end
 
   # GET /realtors/new
@@ -23,7 +24,11 @@ class RealtorsController < ApplicationController
   # GET /realtors/1/edit
   def edit
     @realtor = Realtor.find(params[:id])
+    @selected = 2
     @companies = Company.all
+    if @realtor.companies_id != nil
+      @company = @realtor.companies_id
+    end
   end
 
   # POST /realtors
@@ -34,6 +39,7 @@ class RealtorsController < ApplicationController
     @user.is_realtor = true
     respond_to do |format|
       if @user.save
+        @realtor.users_id = @user.id
         if @realtor.save
           format.html {redirect_to @realtor, notice: 'Realtor was successfully created.'}
           format.json {render :show, status: :created, location: @realtor}

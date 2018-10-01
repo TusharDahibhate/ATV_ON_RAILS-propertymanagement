@@ -10,6 +10,7 @@ class HousehuntersController < ApplicationController
   # GET /househunters/1
   # GET /househunters/1.json
   def show
+    @user = User.find(@househunter.users_id)
   end
 
   # GET /househunters/new
@@ -30,6 +31,7 @@ class HousehuntersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        @househunter.users_id = @user.id
         if @househunter.save
           format.html {redirect_to @househunter, notice: 'Househunter was successfully created.'}
           format.json {render :show, status: :created, location: @househunter}

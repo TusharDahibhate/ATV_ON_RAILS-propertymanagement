@@ -3,9 +3,9 @@
 <%= form_for @realtor do |f| %>
   First Name<br><%= f.text_field :first_name %><br>
   Last Name<br><%= f.text_field :last_name %><br>
-  Email<br><input type="text" name="user[email_id]" id="user_email_id" /><br>
+  Email<br><input type="email" name="user[email_id]" id="user_email_id" /><br>
   Password<br><input type="password" name="user[password]" id="user_password" /><br>
   <%= f.submit "Sign up" %><br>
 <% end %>
 
-<%= link_to 'Back', realtors_path %>
+<%= link_to 'Back', login_path %>

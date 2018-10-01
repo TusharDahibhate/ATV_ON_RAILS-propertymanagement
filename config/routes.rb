@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  root :to => "login#new"
   resources :inquiries
   resources :houses
   resources :househunters
   resources :realtors
   resources :companies
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get    '/login',      to: 'login#new'
+  post   '/login',      to: 'login#create'
+  get    '/logout',     to: 'login#destroy'
+  get    '/rel_houses', to: 'houses#realtorhouses'
+  get    '/addimage/:id',  to: 'houses#addimages'
 end
