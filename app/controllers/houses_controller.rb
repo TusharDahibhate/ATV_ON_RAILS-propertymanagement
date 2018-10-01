@@ -4,6 +4,7 @@ class HousesController < ApplicationController
   # GET /houses
   # GET /houses.json
   def index
+    session[:previous_url] = request.referer
     @houses = House.all
     @role = session[:role]
   end
@@ -11,10 +12,12 @@ class HousesController < ApplicationController
   # GET /houses/1
   # GET /houses/1.json
   def show
+    session[:previous_url] = request.referer
     @company_name = Company.find(House.find(params[:id]).companies_id).name
   end
 
   def realtorhouses
+    session[:previous_url] = request.referer
     rel = Realtor.find_by(users_id: session[:user_id])
     @houses = House.where(realtor_id: rel.id)
     @company = Company.find(rel.companies_id).name
@@ -48,8 +51,6 @@ class HousesController < ApplicationController
       realtor = Realtor.find_by(users_id: session[:user_id])
       if realtor.companies_id != nil
         @company = Company.find(realtor.companies_id).name
-      else
-        redirect_to session[:previous_url], notice: "invalid company"
       end
     end
     if @house.realtor_id != Realtor.find_by(users_id: session[:user_id]).id
