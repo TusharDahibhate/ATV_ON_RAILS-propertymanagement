@@ -12,6 +12,7 @@ class LoginController < ApplicationController
     if user && user.password == params[:login][:password]
       session[:user_id] = user.id
       session[:logged_in] = 'true'
+      session[:role] = params[:login][:role]
       if user.is_admin
         session[:is_admin]= true
         redir = "/admin"

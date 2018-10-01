@@ -8,8 +8,10 @@
   <%= f.email_field :email%>
 
   <%= f.label :password %>
-  <%= f.password_field :password%>
-<br><br>
+  <%= f.password_field :password%><br>
+  Login as:<br>
+  <%= f.radio_button :role , "realtor" %> Realtor<br>
+  <%= f.radio_button :role , "househunter" %> House Hunter<br>
   <%= f.submit "Log in" %>
 <% end %>
 <br>
