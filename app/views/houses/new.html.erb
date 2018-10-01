@@ -24,9 +24,9 @@
   <%= f.label :owner_name %>
   <%= f.text_field :owner_name %><br>
   Basement:  <%= f.check_box :basement %><br>
+  Add images: <br><%= f.file_field :images, multiple: true %><br><br>
 
-
-  <%= f.submit "Create House" %>
+  <%= f.submit "Create House" %><br><br>
 <% end %>
 
 

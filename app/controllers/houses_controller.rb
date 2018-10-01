@@ -63,7 +63,6 @@ class HousesController < ApplicationController
     @house = House.new(house_params)
     realtor_id = Realtor.find_by(users_id: session[:user_id])
     @house.realtor_id = realtor_id.id
-    @house.companies_id = Company.find(realtor_id.companies_id).id
     respond_to do |format|
       if @house.save
         format.html {redirect_to houses_path, notice: 'House was successfully created.'}
@@ -114,6 +113,6 @@ class HousesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def house_params
-    params.require(:house).permit(:realtor_id, :companies_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name)
+    params.require(:house).permit(:realtor_id, :companies_id, :location, :area, :year_built, :style, :list_prize, :floor_count, :basement, :owner_name, images: [])
   end
 end

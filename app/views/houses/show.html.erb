@@ -45,5 +45,9 @@
   <%= @house.owner_name %>
 </p>
 
+<% @house.images.each do |image| %>
+  <%= image_tag image %> <br />
+<% end %>
+
 <%= link_to 'Edit', edit_house_path(@house) %> |
 <%= link_to 'Back', @previous_url %>
