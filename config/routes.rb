@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get    '/logout',     to: 'login#destroy'
   get    '/rel_houses', to: 'houses#realtorhouses'
   post   '/house_interested', to: 'houses#interested'
-  get '/inquiries/new/:id', to: 'inquiries#new', as: :test
+  get '/inquiry/new/:id', to: 'inquiries#new', as: :test
   get    '/addimage/:id',  to: 'houses#addimages'
+  get '/househunter_inquiries/:id', to: 'inquiries#index', as: :househunter_inquiries
 end
