@@ -45,4 +45,6 @@
 
 <br>
 
-<%= link_to 'New House', new_house_path %>
+<% if @role == 'admin'  %>
+  <%= link_to 'New House', new_house_path %>
+<% end %>

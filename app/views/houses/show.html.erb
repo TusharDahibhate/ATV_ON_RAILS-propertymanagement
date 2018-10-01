@@ -45,6 +45,14 @@
   <%= @house.owner_name %>
 </p>
 
+<%= form_with(url: "/house_interested", method: "post") do %>
+  <%= label_tag("Are you interested in this house?") %>
+  <input type = "hidden" id = "id" name = "id" value="<%=@houseid %>"/>
+  <%= submit_tag("Yes! I am interested") %>
+<% end %>
+
+<%= link_to 'Submit an enquiry', test_path(@houseid) %>
+<%= link_to 'Edit', edit_house_path(@house) %>
 <% @house.images.each do |image| %>
   <%= image_tag image %> <br />
 <% end %>
