@@ -57,7 +57,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development do
-  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+  gem 'mysql2'
 end
 
 group :production do
