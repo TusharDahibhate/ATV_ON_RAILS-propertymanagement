@@ -1,0 +1,27 @@
+
+
+<h1>Houses</h1>
+
+<table>
+  <tbody>
+  <% @houses.each do |house| %>
+    <%if !house.nil? %>
+      <tr>
+        <td><%= house.location %></td>
+        <td><%= house.area %></td>
+        <td><%= house.year_built %></td>
+        <td><%= house.style %></td>
+        <td><%= house.list_prize %></td>
+        <td><%= house.floor_count %></td>
+        <td><%= house.basement %></td>
+        <td><%= house.owner_name %></td>
+        <td><%= house.owner_name %></td>
+      </tr>
+    <%end %>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
