@@ -5,6 +5,9 @@ class HousehuntersController < ApplicationController
   # GET /househunters.json
   def index
     @househunters = Househunter.all
+    if session[:role] != "admin"
+      redirect_to login_path, notice: "You are not allowed to access that url"
+    end
   end
 
   # GET /househunters/1
@@ -36,11 +39,11 @@ class HousehuntersController < ApplicationController
           format.html {redirect_to @househunter, notice: 'Househunter was successfully created.'}
           format.json {render :show, status: :created, location: @househunter}
         else
-          format.html {render :new}
+          format.html {redirect_to new_househunter_path, notice: 'Error saving house hunter'}
           format.json {render json: @househunter.errors, status: :unprocessable_entity}
         end
       else
-        format.html {render :new}
+        format.html {redirect_to new_househunter_path, notice: 'Error saving user'}
         format.json {render json: @user.errors, status: :unprocessable_entity}
       end
     end

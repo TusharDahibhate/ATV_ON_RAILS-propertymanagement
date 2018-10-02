@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 2018_10_01_020859) do
   create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "subject"
     t.text "content"
-    t.bigint "users_id"
+    t.bigint "househunters_id"
     t.bigint "houses_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["househunters_id"], name: "index_inquiries_on_househunters_id"
     t.index ["houses_id"], name: "index_inquiries_on_houses_id"
-    t.index ["users_id"], name: "index_inquiries_on_users_id"
   end
 
   create_table "interested_househunters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -121,8 +121,8 @@ ActiveRecord::Schema.define(version: 2018_10_01_020859) do
 
   add_foreign_key "househunters", "users", column: "users_id"
   add_foreign_key "houses", "companies", column: "companies_id"
+  add_foreign_key "inquiries", "househunters", column: "househunters_id"
   add_foreign_key "inquiries", "houses", column: "houses_id"
-  add_foreign_key "inquiries", "users", column: "users_id"
   add_foreign_key "realtors", "companies", column: "companies_id"
   add_foreign_key "realtors", "users", column: "users_id"
   add_foreign_key "realtors_houses", "houses", column: "houses_id"

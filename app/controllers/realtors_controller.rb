@@ -4,6 +4,9 @@ class RealtorsController < ApplicationController
   # GET /realtors
   # GET /realtors.json
   def index
+    if session[:role] != "admin"
+      redirect_to login_path, notice: "You cannot access the page"
+    end
     @realtors = Realtor.all
   end
 
@@ -23,8 +26,6 @@ class RealtorsController < ApplicationController
 
   # GET /realtors/1/edit
   def edit
-    puts "----------------------------------------------------------------------"
-    puts session[:previous_url].inspect
     @realtor = Realtor.find(params[:id])
     @selected = 2
     @companies = Company.all
