@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get '/inquiry/new/:id', to: 'inquiries#new', as: :test
   get    '/addimage/:id',  to: 'houses#addimages'
   get '/househunter_inquiries/:id', to: 'inquiries#index', as: :househunter_inquiries
+  get     '/input', to: "househunters#input"
+  get     '/gotosearch', to:"househunters#search"
 end
