@@ -4,6 +4,9 @@ class RealtorsController < ApplicationController
   # GET /realtors
   # GET /realtors.json
   def index
+    if session[:role] != "admin"
+      redirect_to login_path, notice: "You cannot access the page"
+    end
     @realtors = Realtor.all
   end
 
@@ -77,7 +80,7 @@ class RealtorsController < ApplicationController
       format.json {head :no_content}
     end
   end
-
+  
   private
 
   # Use callbacks to share common setup or constraints between actions.

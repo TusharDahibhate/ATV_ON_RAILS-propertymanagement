@@ -5,6 +5,9 @@ class HousehuntersController < ApplicationController
   # GET /househunters.json
   def index
     @househunters = Househunter.all
+    if session[:role] != "admin"
+      redirect_to login_path, notice: "You are not allowed to access that url"
+    end
   end
 
   # GET /househunters/1
@@ -36,11 +39,11 @@ class HousehuntersController < ApplicationController
           format.html {redirect_to @househunter, notice: 'Househunter was successfully created.'}
           format.json {render :show, status: :created, location: @househunter}
         else
-          format.html {render :new}
+          format.html {redirect_to new_househunter_path, notice: 'Error saving house hunter'}
           format.json {render json: @househunter.errors, status: :unprocessable_entity}
         end
       else
-        format.html {render :new}
+        format.html {redirect_to new_househunter_path, notice: 'Error saving user'}
         format.json {render json: @user.errors, status: :unprocessable_entity}
       end
     end
@@ -70,6 +73,69 @@ class HousehuntersController < ApplicationController
     end
   end
 
+  def input
+
+  end
+
+  def search
+    str = ""
+    if params[:location] != nil && params[:location] != ""
+      if str.empty?
+        str = str + " location = '#{params[:location]}'"
+      else
+        str = str + "AND location = '#{params[:location]}' "
+      end
+    end
+    if params[:area] != nil && params[:area] != ""
+      if str.empty?
+        str = str + " area = #{params[:area]} "
+      else
+        str = str + " AND area = #{params[:area]}  "
+      end
+    end
+    if params[:year_built] != nil && params[:year_built] != ""
+      if str.empty?
+        str = str + " year_built = #{params[:year_built]} "
+      else
+        str = str + " AND year_built = #{params[:year_built]} "
+      end
+    end
+    if params[:style] != nil && params[:style] != ""
+      if str.empty?
+        str = str + " style = '#{params[:style]}' "
+      else
+        str = str + " AND style = '#{params[:style]}' "
+      end
+    end
+    if params[:list_prize] != nil && params[:list_prize] != ""
+      if str.empty?
+        str = str + " list_prize = #{params[:list_prize]} "
+      else
+        str = str + " AND list_prize = #{params[:list_prize]} "
+      end
+    end
+    if params[:floor_count] != nil && params[:floor_count] != ""
+      if str.empty?
+        str = str + " floor_count = #{params[:floor_count]} "
+      else
+        str = str + " AND floor_count = #{params[:floor_count]} "
+      end
+    end
+    if params[:basement] != nil && params[:basement] != ""
+      if str.empty?
+        str = str + " basement=#{params[:basement]} "
+      else
+        str = str + " AND basement=#{params[:basement]} "
+      end
+    end
+    if params[:owner_name] != nil && params[:owner_name] != ""
+      if str.empty?
+        str = str + " owner_name='#{params[:owner_name]}' "
+      else
+        str = str + " AND owner_name='#{params[:owner_name]}' "
+      end
+    end
+  end
 
   private
 
