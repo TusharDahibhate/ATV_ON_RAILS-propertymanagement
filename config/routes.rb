@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root :to => "login#new"
   resources :inquiries do
     member do
-      get 'new'
+
     end
   end
   resources :houses
