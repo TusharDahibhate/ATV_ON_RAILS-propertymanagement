@@ -75,64 +75,64 @@ class HousehuntersController < ApplicationController
   end
 
   def search
-    str=""
-    if params[:location]!=nil && params[:location] !=""
+    str = ""
+    if params[:location] != nil && params[:location] != ""
       if str.empty?
-        str= str+" location = '#{params[:location]}'"
+        str = str + " location = '#{params[:location]}'"
       else
-        str=str+"AND location = '#{params[:location]}' "
+        str = str + "AND location = '#{params[:location]}' "
       end
     end
-    if params[:area]!=nil && params[:area] !=""
+    if params[:area] != nil && params[:area] != ""
       if str.empty?
-        str=str+" area = #{params[:area]} "
+        str = str + " area = #{params[:area]} "
       else
-        str=str+" AND area = #{params[:area]}  "
+        str = str + " AND area = #{params[:area]}  "
       end
     end
-    if params[:year_built]!=nil && params[:year_built] !=""
+    if params[:year_built] != nil && params[:year_built] != ""
       if str.empty?
-        str=str+" year_built = #{params[:year_built]} "
+        str = str + " year_built = #{params[:year_built]} "
       else
-        str=str+" AND year_built = #{params[:year_built]} "
+        str = str + " AND year_built = #{params[:year_built]} "
       end
     end
     if params[:style] != nil && params[:style] != ""
       if str.empty?
-        str=str+" style = '#{params[:style]}' "
+        str = str + " style = '#{params[:style]}' "
       else
-        str=str+" AND style = '#{params[:style]}' "
+        str = str + " AND style = '#{params[:style]}' "
       end
     end
-    if params[:list_prize]!=nil && params[:list_prize] !=""
+    if params[:list_prize] != nil && params[:list_prize] != ""
       if str.empty?
-        str=str+" list_prize = #{params[:list_prize]} "
+        str = str + " list_prize = #{params[:list_prize]} "
       else
-        str=str+" AND list_prize = #{params[:list_prize]} "
+        str = str + " AND list_prize = #{params[:list_prize]} "
       end
     end
-    if params[:floor_count]!=nil && params[:floor_count] !=""
+    if params[:floor_count] != nil && params[:floor_count] != ""
       if str.empty?
-        str=str+" floor_count = #{params[:floor_count]} "
+        str = str + " floor_count = #{params[:floor_count]} "
       else
-        str=str+" AND floor_count = #{params[:floor_count]} "
+        str = str + " AND floor_count = #{params[:floor_count]} "
       end
     end
-    if params[:basement]!=nil && params[:basement] !=""
+    if params[:basement] != nil && params[:basement] != ""
       if str.empty?
-        str=str+" basement=#{params[:basement]} "
+        str = str + " basement=#{params[:basement]} "
       else
-        str=str+" AND basement=#{params[:basement]} "
+        str = str + " AND basement=#{params[:basement]} "
       end
     end
-    if params[:owner_name]!=nil && params[:owner_name] !=""
+    if params[:owner_name] != nil && params[:owner_name] != ""
       if str.empty?
-        str=str+" owner_name='#{params[:owner_name]}' "
+        str = str + " owner_name='#{params[:owner_name]}' "
       else
-        str=str+" AND owner_name='#{params[:owner_name]}' "
+        str = str + " AND owner_name='#{params[:owner_name]}' "
       end
     end
-
+  end
 
   private
 

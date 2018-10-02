@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bfd8d1e3-6da7-441e-ae5e-f796846637a3" name="Default Changelist" comment="Add images to houses belonging to realtor's company">
+    <list default="true" id="bfd8d1e3-6da7-441e-ae5e-f796846637a3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/househunters_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/househunters_controller.rb" afterDir="false" />
     </list>
@@ -141,12 +141,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="rb" value="4" />
+          <entry key="rb" value="14" />
+          <entry key="txt" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Ruby" value="4" />
+          <entry key="PLAIN_TEXT" value="43" />
+          <entry key="Ruby" value="14" />
         </counts>
       </usages-collector>
     </session>
@@ -183,8 +185,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/househunters_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+            <state relative-caret-position="2380">
+              <caret line="140" column="26" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -525,7 +527,7 @@
       <workItem from="1538266494544" duration="27518000" />
       <workItem from="1538347658307" duration="2848000" />
       <workItem from="1538350804462" duration="18144000" />
-      <workItem from="1538437781833" duration="479000" />
+      <workItem from="1538437781833" duration="760000" />
     </task>
     <task id="LOCAL-00001" summary="Added realtor registration">
       <created>1538268757295</created>
@@ -646,11 +648,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538365786734</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary=" House Search functionality for househunter">
+      <created>1538438464197</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1538438464197</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51930000" />
+    <option name="totallyTimeSpent" value="52211000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -665,7 +674,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26442954" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.26442954" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -687,7 +696,7 @@
       <window_info anchor="right" id="Database" order="3" weight="0.32954547" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26060605" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26442954" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -696,12 +705,12 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32843137" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924242" weight="0.32843137" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32843137" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.33006537" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49772727" weight="0.5686275" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5022727" side_tool="true" weight="0.33006537" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32976827" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -759,7 +768,8 @@
     <MESSAGE value="Fixed bug when visiting: house#show -&gt; house#edit" />
     <MESSAGE value="Added required migration for images which was left out" />
     <MESSAGE value="Add images to houses belonging to realtor's company" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add images to houses belonging to realtor's company" />
+    <MESSAGE value=" House Search functionality for househunter" />
+    <option name="LAST_COMMIT_MESSAGE" value=" House Search functionality for househunter" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/db/migrate/20180929225748_create_househunters_house.rb" />
@@ -1060,8 +1070,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/househunters_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+        <state relative-caret-position="2380">
+          <caret line="140" column="26" selection-start-line="140" selection-start-column="26" selection-end-line="140" selection-end-column="26" />
         </state>
       </provider>
     </entry>
