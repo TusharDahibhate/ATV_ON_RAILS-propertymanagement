@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Email</th>
-      <th>Password</th>
       <th>Is admin</th>
       <th>Is realtor</th>
       <th>Is househunter</th>
@@ -18,7 +17,6 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email_id %></td>
-        <td><%= user.password %></td>
         <td><%= user.is_admin %></td>
         <td><%= user.is_realtor %></td>
         <td><%= user.is_househunter %></td>

@@ -1,24 +1,9 @@
-# README
+admin username: admin@admin
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+password: admin
 
-Things you may want to cover:
+Admin does not need to select a role while logging in.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Known issues: 
+1. After logging in, anyone can access any URL. Access control needs to be enhanced.
+2. Front end validations are not employed.
