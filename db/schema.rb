@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_020859) do
+ActiveRecord::Schema.define(version: 2018_10_05_041808) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -119,12 +119,12 @@ ActiveRecord::Schema.define(version: 2018_10_01_020859) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "househunters", "users", column: "users_id"
-  add_foreign_key "houses", "companies", column: "companies_id"
-  add_foreign_key "inquiries", "househunters", column: "househunters_id"
-  add_foreign_key "inquiries", "houses", column: "houses_id"
-  add_foreign_key "realtors", "companies", column: "companies_id"
-  add_foreign_key "realtors", "users", column: "users_id"
-  add_foreign_key "realtors_houses", "houses", column: "houses_id"
-  add_foreign_key "realtors_houses", "realtors", column: "realtors_id"
+  add_foreign_key "househunters", "users", column: "users_id", on_delete: :cascade
+  add_foreign_key "houses", "companies", column: "companies_id", on_delete: :cascade
+  add_foreign_key "inquiries", "househunters", column: "househunters_id", on_delete: :cascade
+  add_foreign_key "inquiries", "houses", column: "houses_id", on_delete: :cascade
+  add_foreign_key "realtors", "companies", column: "companies_id", on_delete: :nullify
+  add_foreign_key "realtors", "users", column: "users_id", on_delete: :cascade
+  add_foreign_key "realtors_houses", "houses", column: "houses_id", on_delete: :cascade
+  add_foreign_key "realtors_houses", "realtors", column: "realtors_id", on_delete: :cascade
 end
