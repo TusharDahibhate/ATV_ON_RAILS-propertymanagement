@@ -80,7 +80,30 @@ class RealtorsController < ApplicationController
       format.json {head :no_content}
     end
   end
-  
+  def potential
+    #session[:previous_url] = request.referer
+    rel = Realtor.find_by(users_id: session[:user_id])
+    puts rel.id
+    @com = Company.find(rel.companies_id)
+    @house = House.where(:companies_id=>@com.id)
+    #hh = Hash.new
+    fh=Hash.new
+    @fu=Hash.new
+    i=0
+    j=0
+    puts @house
+    @house.each do |h|
+
+      hh=InterestedHousehunter.where(:house_id => h[:id])
+      unless hh.empty?
+        @fu[i]=Househunter.where(:id=>hh[0][:househunter_id])
+       i=i+1
+        end
+      #fh[i]={h.id=>h,hh[h.id][:househunter_id]=>fu[hh[h.id][:househunter_id]]}
+      #i=i+1
+    end
+    #@househunters=Househunter.find_by()
+  end
   private
 
   # Use callbacks to share common setup or constraints between actions.
