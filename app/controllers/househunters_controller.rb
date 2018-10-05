@@ -28,23 +28,42 @@ class HousehuntersController < ApplicationController
   # POST /househunters
   # POST /househunters.json
   def create
-    @househunter = Househunter.new(househunter_params)
-    @user = User.new(user_params)
-    @user.is_househunter = true
-
-    respond_to do |format|
-      if @user.save
-        @househunter.users_id = @user.id
-        if @househunter.save
-          format.html {redirect_to @househunter, notice: 'Househunter was successfully created.'}
-          format.json {render :show, status: :created, location: @househunter}
-        else
-          format.html {redirect_to new_househunter_path, notice: 'Error saving house hunter'}
-          format.json {render json: @househunter.errors, status: :unprocessable_entity}
-        end
+    existing_user = User.find_by(email_id: params[:user][:email_id])
+    if existing_user != nil
+      if existing_user.is_househunter == true
+        redirect_to logout_path, notice: "You are already registered as a house hunter"
       else
-        format.html {redirect_to new_househunter_path, notice: 'Error saving user'}
-        format.json {render json: @user.errors, status: :unprocessable_entity}
+        existing_user.is_househunter = true
+        if existing_user.save
+          add_hh = Househunter.new(househunter_params)
+          add_hh.users_id = existing_user.id
+          if add_hh.save
+            redirect_to login_path, notice: 'House hunter was successfully created'
+          else
+            redirect_to login_path, notice: 'Error saving househunter'
+          end
+        else
+          redirect_to login_path, notice: 'Error saving user.'
+        end
+      end
+    else
+      @househunter = Househunter.new(househunter_params)
+      @user = User.new(user_params)
+      @user.is_househunter = true
+      respond_to do |format|
+        if @user.save
+          @househunter.users_id = @user.id
+          if @househunter.save
+            format.html {redirect_to login_path, notice: 'House hunter was successfully created.'}
+            format.json {render :show, status: :created, location: @househunter}
+          else
+            format.html {render :new}
+            format.json {render json: @realtor.errors, status: :unprocessable_entity}
+          end
+        else
+          format.html {render :new}
+          format.json {render json: @user.errors, status: :unprocessable_entity}
+        end
       end
     end
   end

@@ -30,24 +30,18 @@ class LoginController < ApplicationController
       if user && user.password == params[:login][:password]
         session[:user_id] = user.id
         session[:logged_in] = true
-
-        # Check user role and set parameters
-        if user.is_realtor != nil && user.is_realtor == true
-          session[:is_realtor] = true
-          # Verify that user is trying to login as a realtor
-          # Without the following condition, trying to log in as realtor with
-          # correct househunter credentials will also work and
-          # will set role as realtor even if user wants to login as husehunter
-          if params[:login][:role] == 'realtor'
-            session[:role] = params[:login][:role]
+        if params[:login][:role] == 'realtor'
+          if user.is_realtor != nil && user.is_realtor == true
+            session[:is_realtor] = true
+            session[:role] = 'realtor'
+            redir = realtor_path(Realtor.find_by(users_id: user.id).id)
           end
-          redir = realtor_path(Realtor.find_by(users_id: user.id).id)
-        elsif user.is_househunter != nil && user.is_househunter == true
-          session[:is_househunter] = true
-          if params[:login][:role] == 'househunter'
-            session[:role] = params[:login][:role]
+        elsif params[:login][:role] == 'househunter'
+          if user.is_househunter != nil && user.is_househunter == true
+            session[:is_househunter] = true
+            session[:role] = 'househunter'
+            redir = househunter_path(Househunter.find_by(users_id: user.id).id)
           end
-          redir = househunter_path(Househunter.find_by(users_id: user.id).id)
         end
       else
         respond_to do |format|
@@ -55,6 +49,7 @@ class LoginController < ApplicationController
         end
       end
     end
+
     if session[:role] == nil
       redir = login_path
       reset_session
@@ -67,4 +62,5 @@ class LoginController < ApplicationController
     reset_session
     redirect_to login_path
   end
+
 end
