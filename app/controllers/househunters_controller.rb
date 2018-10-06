@@ -85,7 +85,14 @@ class HousehuntersController < ApplicationController
   # DELETE /househunters/1
   # DELETE /househunters/1.json
   def destroy
+    @user = User.find_by(:id => @househunter.users_id)
     @househunter.destroy()
+    if @user.is_admin != true && @user.is_realtor != true
+      @user.destroy
+    else
+      @user.is_househunter = 0
+      @user.save
+    end
     respond_to do |format|
       format.html {redirect_to househunters_url, notice: 'Househunter was successfully destroyed.'}
       format.json {head :no_content}
