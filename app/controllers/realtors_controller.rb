@@ -4,6 +4,7 @@ class RealtorsController < ApplicationController
   # GET /realtors
   # GET /realtors.json
   def index
+    @role = session[:role]
     if session[:role] != "admin"
       redirect_to login_path, notice: "You cannot access the page"
     end
@@ -13,6 +14,7 @@ class RealtorsController < ApplicationController
   # GET /realtors/1
   # GET /realtors/1.json
   def show
+    @role = session[:role]
     @realtor = Realtor.find(params[:id])
     if @realtor.companies_id != nil
       @company = Company.find(@realtor.companies_id)
@@ -21,11 +23,13 @@ class RealtorsController < ApplicationController
 
   # GET /realtors/new
   def new
+    @role = session[:role]
     @realtor = Realtor.new
   end
 
   # GET /realtors/1/edit
   def edit
+    @role = session[:role]
     @realtor = Realtor.find(params[:id])
     @selected = 2
     @companies = Company.all

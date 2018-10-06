@@ -1,3 +1,5 @@
+<h1>Realtor Dashboard</h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -22,10 +24,15 @@
   <%= @realtor.phone_number %>
 </p>
 
-<%= link_to 'Back', @previous_url %> <br>
+
 <%= link_to 'Edit', edit_realtor_path(@realtor) %> <br>
 <%= link_to 'List new House', new_house_path %><br>
 <%= link_to 'View houses listed by you', rel_houses_path %><br>
 <%= link_to 'View all listed houses', houses_path %><br>
 <%= link_to 'view list of potential buyers', potential_path %><br>
 <%= link_to 'Logout', logout_path %>
+
+<br>
+<% if @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path %> <br>
+<% end %>

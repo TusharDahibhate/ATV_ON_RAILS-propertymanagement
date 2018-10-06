@@ -31,4 +31,6 @@
 <br>
 
 <%= link_to 'New Realtor', new_realtor_path %>
-<%= link_to 'Back', @previous_url %>
+<% if @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path %> <br>
+<% end %>
