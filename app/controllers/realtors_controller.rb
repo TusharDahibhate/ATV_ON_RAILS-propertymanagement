@@ -91,10 +91,12 @@ class RealtorsController < ApplicationController
     end
   end
 
-  # DELETE /realtors/1
+  # DELETE /realtors/1consist
   # DELETE /realtors/1.json
   def destroy
+    @user = User.find_by(:id => @realtor.users_id)
     @realtor.destroy
+    @user.destroy
     respond_to do |format|
       format.html {redirect_to realtors_url, notice: 'Realtor was successfully destroyed.'}
       format.json {head :no_content}

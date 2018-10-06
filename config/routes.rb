@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get     '/input', to: "househunters#input"
   get     '/gotosearch', to:"househunters#search"
   get   '/potential',to: "realtors#potential"
+  get    '/admin',            to: 'admin#show'
 end
