@@ -25,6 +25,7 @@ class HousehuntersController < ApplicationController
 
   # GET /househunters/new
   def new
+    @role = session[:role]
     @househunter = Househunter.new
   end
 
