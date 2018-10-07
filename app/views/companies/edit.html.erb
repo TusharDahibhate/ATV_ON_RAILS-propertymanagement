@@ -2,6 +2,9 @@
 
 <%= render 'form', company: @company %>
 
-<%= link_to 'Show', @company %> |
-<%= link_to 'Back', @previous_url %>
+<%= link_to 'Show', @company %>
+<br>
+<% if @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path %> <br>
+<% end %>
 

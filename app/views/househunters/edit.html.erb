@@ -2,5 +2,9 @@
 
 <%= render 'form', househunter: @househunter %>
 
-<%= link_to 'Show', @househunter %> |
-<%= link_to 'Back', @previous_url %>
+<br>
+<% if @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path %> <br>
+<% else %>
+  <%= link_to 'Back to Dashboard', househunter_path(@househunter.id) %> <br>
+<% end %>

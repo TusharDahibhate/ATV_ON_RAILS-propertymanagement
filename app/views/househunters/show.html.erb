@@ -1,3 +1,4 @@
+<h1>Househunter Dashboard</h1>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -30,10 +31,13 @@
 <%= link_to 'Show Inquiries', househunter_inquiries_path(@househunter) %>
 <br>
 <%= link_to 'logout', logout_path %>
-
 <br>
-
 <%= link_to 'search', input_path %><br>
-<%= link_to 'Back', @previous_url %><br>
+<br>
 <%= link_to 'Logout', logout_path %><br>
+<br>
+<% if @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path %> <br>
+<% end %>
+
 

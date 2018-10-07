@@ -5,11 +5,21 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all
+    @role = session[:role]
+    if @role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+    else
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+    end
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @role = session[:role]
+    if @role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+    end
   end
 
   # GET /companies/new
@@ -17,12 +27,14 @@ class CompaniesController < ApplicationController
     @company = Company.new
     session[:previous_url] ||= request.referer
     @previous_url = session[:previous_url]
+    @role = session[:role]
   end
 
   # GET /companies/1/edit
   def edit
     session[:previous_url] = request.referer
     @previous_url = session[:previous_url]
+    @role = session[:role]
   end
 
   # POST /companies

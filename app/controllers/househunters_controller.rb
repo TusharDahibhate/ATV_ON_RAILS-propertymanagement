@@ -4,6 +4,7 @@ class HousehuntersController < ApplicationController
   # GET /househunters
   # GET /househunters.json
   def index
+    @role = session[:role]
     @househunters = Househunter.all
     if session[:role] != "admin"
       redirect_to login_path, notice: "You are not allowed to access that url"
@@ -14,6 +15,12 @@ class HousehuntersController < ApplicationController
   # GET /househunters/1.json
   def show
     @user = User.find(@househunter.users_id)
+    @role = session[:role]
+    if @role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+    else
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+    end
   end
 
   # GET /househunters/new
@@ -23,6 +30,8 @@ class HousehuntersController < ApplicationController
 
   # GET /househunters/1/edit
   def edit
+    @role = session[:role]
+    @househunter = Househunter.find(params[:id])
   end
 
   # POST /househunters
@@ -100,10 +109,23 @@ class HousehuntersController < ApplicationController
   end
 
   def input
-
+    @role = session[:role]
+    if @role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+    else
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+    end
   end
 
   def search
+    @role = session[:role]
+    if @role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+    else
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+    end
+
+
     str = ""
     if params[:location] != nil && params[:location] != ""
       if str.empty?

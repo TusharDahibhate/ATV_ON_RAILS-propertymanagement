@@ -27,8 +27,10 @@
         <td><%= company.revenue %></td>
         <td><%= company.synopsis %></td>
         <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @role != "househunter" %>
+          <td><%= link_to 'Edit', edit_company_path(company) %></td>
+          <td><%= link_to 'Destroy', company, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <% end %>>
       </tr>
     <% end %>
   </tbody>
@@ -37,4 +39,11 @@
 <br>
 
 <%= link_to 'New Company', new_company_path %>
-<%= link_to 'Back', @previous_url %>
+
+<% if @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path %> <br>
+<% elsif @role == "househunter" %>
+  <%= link_to 'Back to Dashboard', househunter_path(@househunter.id) %> <br>
+<% else %>
+  <%= link_to 'Back to Dashboard', realtor_path(@realtor.id) %> <br>
+<% end %>

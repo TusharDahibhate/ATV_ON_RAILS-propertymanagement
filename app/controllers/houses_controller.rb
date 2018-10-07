@@ -7,6 +7,11 @@ class HousesController < ApplicationController
     session[:previous_url] = request.referer
     @houses = House.all
     @role = session[:role]
+    if (@role == "househunter")
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+    else
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+    end
   end
 
   # GET /houses/1

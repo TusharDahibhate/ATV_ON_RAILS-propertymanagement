@@ -24,5 +24,9 @@
 
 <br>
 
-<%= link_to 'Back', @previous_url %>
+<% if @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path %> <br>
+<% else %>
+  <%= link_to 'Back to Dashboard', househunter_path(@househunter.id) %> <br>
+<% end %>
 
