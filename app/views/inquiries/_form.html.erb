@@ -21,8 +21,8 @@
     <%= form.text_area :content %>
   </div>
 
-  <%= form.hidden_field :user_id, :value => @househunterid.id %>
-  <%= form.hidden_field :house_id, :value => @houseid %>
+  <%= form.hidden_field :user_id, :value => @househunter.id %>
+  <%= form.hidden_field :house_id, :value => @house.id %>
 
   <div class="actions">
     <%= form.submit %>

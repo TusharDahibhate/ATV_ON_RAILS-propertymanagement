@@ -7,8 +7,8 @@
     <tr>
       <th>Subject</th>
       <th>Content</th>
-      <th>User</th>
       <th>House</th>
+      <th>Reply</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,10 +18,14 @@
       <tr>
         <td><%= inquiry.subject %></td>
         <td><%= inquiry.content %></td>
-        <td><%= inquiry.househunters_id %></td>
-        <td><%= inquiry.houses_id %></td>
-        <td><%= link_to 'Edit', edit_inquiry_path(inquiry) %></td>
-        <td><%= link_to 'Destroy', inquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show house', house_path(inquiry.houses_id) %></td>
+        <td><%= inquiry.reply %></td>
+        <% if @role == "realtor" %>
+          <td><%= link_to 'Reply', edit_inquiry_path(inquiry) %></td>
+        <% else %>
+          <td><%= link_to 'Edit', edit_inquiry_path(inquiry) %></td>
+          <td><%= link_to 'Destroy', inquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -29,5 +33,8 @@
 
 <br>
 
-<%= link_to 'New Inquiry', new_inquiry_path %>
-<%= link_to 'Back', @previous_url %>
+<% if @role == "househunter" %>
+  <%= link_to 'Back to Dashboard', househunter_path(@househunter.id) %> <br>
+<% elsif @role == "realtor" %>
+  <%= link_to 'Back to Dashboard', realtor_path(@realtor.id) %> <br>
+<% end %>

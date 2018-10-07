@@ -1,3 +1,4 @@
+<h1>Realestate company</h1>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -35,7 +36,9 @@
   <%= @company.synopsis %>
 </p>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
+<% if @role == "admin" %>
+  <%= link_to 'Edit', edit_company_path(@company) %> |
+<% end %>
 
 <% if @role == "admin" %>
   <%= link_to 'Back to Dashboard', admin_path %> <br>

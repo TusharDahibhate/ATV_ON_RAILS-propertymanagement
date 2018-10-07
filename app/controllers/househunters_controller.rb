@@ -109,6 +109,7 @@ class HousehuntersController < ApplicationController
   end
 
   def input
+    @previous_url = request.referrer
     @role = session[:role]
     if @role == "househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])

@@ -22,8 +22,10 @@
   </tbody>
 </table>
 
-<br>
 
+<br>
+<%= link_to 'Back', @previous_url %>
+<br>
 <% if @role == "admin" %>
   <%= link_to 'Back to Dashboard', admin_path %> <br>
 <% else %>

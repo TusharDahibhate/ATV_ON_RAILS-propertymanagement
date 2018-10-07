@@ -5,6 +5,16 @@ class InquiriesController < ApplicationController
   # GET /inquiries.json
   def index
     @inquiries = Inquiry.all
+    @role = session[:role]
+    if @role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+      @inquiries = Inquiry.find_by(:househunters_id => @househunter.id)
+    elsif @role == "realtor"
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+#      @inquiries = Inquiry.joins(:houses)
+      # puts "-----------------"
+      # puts @inquiries.inspect()
+    end
   end
 
   # GET /inquiries/1
@@ -14,26 +24,35 @@ class InquiriesController < ApplicationController
 
   # GET /inquiries/new
   def new
-    @houseid = params[:id]
-    @househunterid = Househunter.find_by(:users_id => session[:user_id])
+    @house = House.find_by(:id => params[:id])
+    @househunter = Househunter.find_by(:users_id => session[:user_id])
     @inquiry = Inquiry.new
+    @role = session[:role]
 
   end
 
   # GET /inquiries/1/edit
   def edit
+    @role = session[:role]
+    if @role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+    elsif @role == "realtor"
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+    end
+
   end
 
   # POST /inquiries
   # POST /inquiries.json
   def create
 
-    @househunter = Househunter.find_by(:id => inquiry_params[:user_id])
-    @inquiry = Inquiry.new(:househunters_id => inquiry_params[:user_id], :houses_id => inquiry_params[:house_id], :content => inquiry_params[:content], :subject => inquiry_params[:subject])
+    @househunter = Househunter.find_by(:users_id => session[:user_id])
+    @house = House.find_by(:id => inquiry_params[:house_id])
+    @inquiry = Inquiry.new(:househunters_id => @househunter.id, :houses_id => inquiry_params[:house_id], :content => inquiry_params[:content], :subject => inquiry_params[:subject])
 
     respond_to do |format|
       if @inquiry.save
-        format.html {redirect_to house_path(@househunter), notice: 'Inquiry was successfully created.'}
+        format.html {redirect_to house_path(@house.id), notice: 'Inquiry was successfully created.'}
       else
         format.html {redirect_to request.referer, notice: 'Error'}
       end
@@ -45,7 +64,7 @@ class InquiriesController < ApplicationController
   def update
     respond_to do |format|
       if @inquiry.update(inquiry_params)
-        format.html { redirect_to @inquiry, notice: 'Inquiry was successfully updated.' }
+        format.html { redirect_to inquiries_path, notice: 'Inquiry was successfully updated.' }
         format.json { render :show, status: :ok, location: @inquiry }
       else
         format.html { render :edit }
@@ -55,6 +74,7 @@ class InquiriesController < ApplicationController
   end
 
   # DELETE /inquiries/1
+  # DELETE /inquiries/1.json
   # DELETE /inquiries/1.json
   def destroy
     @inquiry.destroy
@@ -72,6 +92,6 @@ class InquiriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inquiry_params
-      params.require(:inquiry).permit(:subject, :content, :users_id, :houses_id)
+      params.require(:inquiry).permit(:subject, :content, :user_id, :house_id, :reply)
     end
 end

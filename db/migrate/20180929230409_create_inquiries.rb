@@ -3,6 +3,7 @@ class CreateInquiries < ActiveRecord::Migration[5.2]
     create_table :inquiries do |t|
       t.string :subject
       t.text :content
+      t.text :reply
       t.references :househunters, {index: true, foreign_key: true}
       t.references :houses, {index: true, foreign_key: true}
 

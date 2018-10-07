@@ -29,15 +29,16 @@
 <%= link_to 'Edit Profile', edit_househunter_path(@househunter) %>
 <br>
 <%= link_to 'Show Inquiries', househunter_inquiries_path(@househunter) %>
+
 <br>
-<%= link_to 'logout', logout_path %>
-<br>
-<%= link_to 'search', input_path %><br>
-<br>
-<%= link_to 'Logout', logout_path %><br>
+<%= link_to 'Search Houses', input_path %><br>
+
 <br>
 <% if @role == "admin" %>
   <%= link_to 'Back to Dashboard', admin_path %> <br>
 <% end %>
+
+<br>
+<%= link_to 'Logout', logout_path %><br>
 
 

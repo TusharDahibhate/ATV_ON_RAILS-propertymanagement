@@ -21,6 +21,13 @@ class HousesController < ApplicationController
     @company_name = Company.find(House.find(params[:id]).companies_id).name
     @houseid = params[:id]
     @role = session[:role]
+
+    if @role =="househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+    elsif @role = "realtor"
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+    end
+
   end
 
   def realtorhouses
@@ -47,7 +54,7 @@ class HousesController < ApplicationController
       if realtor != nil && realtor.companies_id != nil
         @company = Company.find(realtor.companies_id).name
       else
-        redirect_to session[:previous_url], notice: "invalid company"
+        redirect_to session[:previous_url], notice: "No company found!"
       end
     end
   end
