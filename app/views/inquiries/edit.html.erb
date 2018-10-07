@@ -1,4 +1,4 @@
-<% if @role == "househunter" %>
+<% if @role == "househunter" or @role == "admin" %>
   <h1>Editing Inquiry</h1>
 <% elsif @role == "realtor" %>
   <h1>Reply to an Inquiry</h1>
@@ -17,7 +17,7 @@
     </div>
   <% end %>
 
-  <% if @role == "househunter" %>
+  <% if @role == "househunter" or @role == "admin" %>
 
     <div class="field">
       <%= form.label :subject %>
@@ -63,5 +63,7 @@
   <%= link_to 'Back to Dashboard', househunter_path(@househunter.id) %> <br>
 <% elsif @role == "realtor" %>
   <%= link_to 'Back to Dashboard', realtor_path(@realtor.id) %> <br>
+<% elsif @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path %> <br>
 <% end %>
 

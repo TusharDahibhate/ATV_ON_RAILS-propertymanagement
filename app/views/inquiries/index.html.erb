@@ -37,4 +37,6 @@
   <%= link_to 'Back to Dashboard', househunter_path(@househunter.id) %> <br>
 <% elsif @role == "realtor" %>
   <%= link_to 'Back to Dashboard', realtor_path(@realtor.id) %> <br>
+<% elsif @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path%> <br>
 <% end %>

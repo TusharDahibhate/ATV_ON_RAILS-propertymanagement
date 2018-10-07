@@ -7,9 +7,9 @@ class HousesController < ApplicationController
     session[:previous_url] = request.referer
     @houses = House.all
     @role = session[:role]
-    if (@role == "househunter")
+    if @role == "househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])
-    else
+    elsif @role == "realtor"
       @realtor = Realtor.find_by(:users_id => session[:user_id])
     end
   end
@@ -24,7 +24,7 @@ class HousesController < ApplicationController
 
     if @role =="househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])
-    elsif @role = "realtor"
+    elsif @role == "realtor"
       @realtor = Realtor.find_by(:users_id => session[:user_id])
     end
 
@@ -61,6 +61,8 @@ class HousesController < ApplicationController
 
   # GET /houses/1/edit
   def edit
+    session[:previous_url] = request.referer
+    @role = session[:role]
     @house = House.find(params[:id])
     if !session[:is_admin].nil? && session[:is_admin] == true
       @admin = true
@@ -72,8 +74,11 @@ class HousesController < ApplicationController
         @company = Company.find(realtor.companies_id).name
       end
     end
-    if @house.realtor_id != Realtor.find_by(users_id: session[:user_id]).id
-      redirect_to houses_path, notice: "You cannot edit listing you have not posted"
+
+    if @role == "realtor"
+      if @house.realtor_id != Realtor.find_by(users_id: session[:user_id]).id
+        redirect_to houses_path, notice: "You cannot edit listing you have not posted"
+      end
     end
     # todo: Delete extra tables in migrations
   end
