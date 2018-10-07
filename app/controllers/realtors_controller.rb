@@ -5,6 +5,7 @@ class RealtorsController < ApplicationController
   # GET /realtors.json
   def index
     @role = session[:role]
+    check_access(@role)
     if session[:role] != "admin"
       redirect_to login_path, notice: "You cannot access the page"
     end
@@ -15,6 +16,7 @@ class RealtorsController < ApplicationController
   # GET /realtors/1.json
   def show
     @role = session[:role]
+    check_access(@role)
     @realtor = Realtor.find(params[:id])
     if @realtor.companies_id != nil
       @company = Company.find(@realtor.companies_id)
@@ -24,12 +26,14 @@ class RealtorsController < ApplicationController
   # GET /realtors/new
   def new
     @role = session[:role]
+    check_access(@role)
     @realtor = Realtor.new
   end
 
   # GET /realtors/1/edit
   def edit
     @role = session[:role]
+    check_access(@role)
     @realtor = Realtor.find(params[:id])
     @selected = 2
     @companies = Company.all
@@ -110,6 +114,13 @@ class RealtorsController < ApplicationController
     respond_to do |format|
       format.html {redirect_to realtors_url, notice: 'Realtor was successfully destroyed.'}
       format.json {head :no_content}
+    end
+  end
+
+  def check_access(role)
+    if role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+      redirect_to househunter_path(@househunter), notice: "You are not allowed to access that url"
     end
   end
 

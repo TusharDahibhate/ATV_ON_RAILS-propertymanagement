@@ -26,12 +26,14 @@ class InquiriesController < ApplicationController
     @househunter = Househunter.find_by(:users_id => session[:user_id])
     @inquiry = Inquiry.new
     @role = session[:role]
+    check_access(@role)
 
   end
 
   # GET /inquiries/1/edit
   def edit
     @role = session[:role]
+    check_access(@role)
     if @role == "househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])
     elsif @role == "realtor"
@@ -79,6 +81,13 @@ class InquiriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to inquiries_url, notice: 'Inquiry was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def check_access(role)
+    if role == "realtor"
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+      redirect_to realtor_path(@realtor), notice: "You are not allowed to access that url"
     end
   end
 

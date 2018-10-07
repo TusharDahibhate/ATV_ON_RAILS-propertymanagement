@@ -45,6 +45,10 @@ class HousesController < ApplicationController
   def new
     session[:previous_url] = request.referer
     @previous_url = request.referer
+    @role = session[:role]
+    check_access(@role)
+    @realtor = Realtor.find_by(users_id: session[:user_id])
+
     @house = House.new
     if !session[:is_admin].nil? && session[:is_admin] == true
       @admin = true
@@ -63,6 +67,7 @@ class HousesController < ApplicationController
   def edit
     session[:previous_url] = request.referer
     @role = session[:role]
+    check_access(@role)
     @house = House.find(params[:id])
     if !session[:is_admin].nil? && session[:is_admin] == true
       @admin = true
@@ -164,6 +169,13 @@ class HousesController < ApplicationController
       end
     end
 
+  end
+
+  def check_access(role)
+    if role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+      redirect_to househunter_path(@househunter), notice: "You are not allowed to access that url"
+    end
   end
 
   private

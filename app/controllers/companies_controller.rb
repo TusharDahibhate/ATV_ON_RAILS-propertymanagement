@@ -28,6 +28,11 @@ class CompaniesController < ApplicationController
     session[:previous_url] ||= request.referer
     @previous_url = session[:previous_url]
     @role = session[:role]
+    check_access(@role)
+
+    if @role == "realtor"
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+    end
   end
 
   # GET /companies/1/edit
@@ -35,6 +40,11 @@ class CompaniesController < ApplicationController
     session[:previous_url] = request.referer
     @previous_url = session[:previous_url]
     @role = session[:role]
+    check_access(@role)
+
+    if @role == "realtor"
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+    end
   end
 
   # POST /companies
@@ -74,6 +84,13 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def check_access(role)
+    if role == "househunter"
+      @househunter = Househunter.find_by(:users_id => session[:user_id])
+      redirect_to househunter_path(@househunter), notice: "You are not allowed to access that url"
     end
   end
 

@@ -16,22 +16,23 @@ class HousehuntersController < ApplicationController
   def show
     @user = User.find(@househunter.users_id)
     @role = session[:role]
+    check_access(@role)
     if @role == "househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])
-    else
-      @realtor = Realtor.find_by(:users_id => session[:user_id])
     end
   end
 
   # GET /househunters/new
   def new
     @role = session[:role]
+    check_access(@role)
     @househunter = Househunter.new
   end
 
   # GET /househunters/1/edit
   def edit
     @role = session[:role]
+    check_access(@role)
     @househunter = Househunter.find(params[:id])
   end
 
@@ -184,6 +185,13 @@ class HousehuntersController < ApplicationController
       else
         str = str + " AND owner_name='#{params[:owner_name]}' "
       end
+    end
+  end
+
+  def check_access(role)
+    if role == "realtor"
+      @realtor = Realtor.find_by(:users_id => session[:user_id])
+      redirect_to realtor_path(@realtor), notice: "You are not allowed to access that url"
     end
   end
 

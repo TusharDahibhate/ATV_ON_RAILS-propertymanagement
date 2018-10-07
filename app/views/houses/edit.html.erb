@@ -39,3 +39,9 @@
 
 <%= link_to 'Show', @house %>
 
+<% if @role == "admin" %>
+  <%= link_to 'Back to Dashboard', admin_path %> <br>
+<% elsif @role == "realtor" %>
+  <%= link_to 'Back to Dashboard', realtor_path(@realtor) %> <br>
+<% end %>
+
