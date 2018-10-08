@@ -112,6 +112,9 @@ ActiveRecord::Schema.define(version: 2018_10_05_041808) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email_id"
     t.string "password"
+    t.string "provider"
+    t.string "oauth_token"
+    t.datetime "oauth_expires_at"
     t.boolean "is_admin"
     t.boolean "is_realtor"
     t.boolean "is_househunter"
