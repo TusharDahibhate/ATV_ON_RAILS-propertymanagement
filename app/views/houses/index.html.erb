@@ -46,6 +46,10 @@
 
 <br>
 
+<% if @role == 'admin'  %>
+  <%= link_to 'New House', new_house_path %>
+<% end %>
+
 <% if @role == "admin" %>
   <%= link_to 'Back to Dashboard', admin_path %> <br>
 <% elsif @role == "realtor" %>

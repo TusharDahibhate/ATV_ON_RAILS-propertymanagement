@@ -93,8 +93,9 @@ class HousesController < ApplicationController
   def create
     @house = House.new(house_params)
     realtor = Realtor.find_by(users_id: session[:user_id])
-    @house.realtor_id = realtor.id
+
     if session[:role] != "admin"
+      @house.realtor_id = realtor.id
       @house.companies_id = realtor.companies_id
     end
     respond_to do |format|

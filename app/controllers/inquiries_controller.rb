@@ -8,7 +8,7 @@ class InquiriesController < ApplicationController
     @role = session[:role]
     if @role == "househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])
-      @inquiries = Inquiry.find_by(:househunters_id => @househunter.id)
+      @inquiries = Inquiry.where(:househunters_id => @househunter.id)
     elsif @role == "realtor"
       @realtor = Realtor.find_by(:users_id => session[:user_id])
       @inquiries = Inquiry.joins("INNER JOIN houses h ON houses_id = h.id WHERE h.companies_id = #{@realtor.companies_id}")
@@ -33,7 +33,6 @@ class InquiriesController < ApplicationController
   # GET /inquiries/1/edit
   def edit
     @role = session[:role]
-    check_access(@role)
     if @role == "househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])
     elsif @role == "realtor"
@@ -64,11 +63,11 @@ class InquiriesController < ApplicationController
   def update
     respond_to do |format|
       if @inquiry.update(inquiry_params)
-        format.html { redirect_to inquiries_path, notice: 'Inquiry was successfully updated.' }
-        format.json { render :show, status: :ok, location: @inquiry }
+        format.html {redirect_to inquiries_path, notice: 'Inquiry was successfully updated.'}
+        format.json {render :show, status: :ok, location: @inquiry}
       else
-        format.html { render :edit }
-        format.json { render json: @inquiry.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @inquiry.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -79,8 +78,8 @@ class InquiriesController < ApplicationController
   def destroy
     @inquiry.destroy
     respond_to do |format|
-      format.html { redirect_to inquiries_url, notice: 'Inquiry was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to inquiries_url, notice: 'Inquiry was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
@@ -92,13 +91,14 @@ class InquiriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_inquiry
-      @inquiry = Inquiry.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def inquiry_params
-      params.require(:inquiry).permit(:subject, :content, :user_id, :house_id, :reply)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_inquiry
+    @inquiry = Inquiry.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def inquiry_params
+    params.require(:inquiry).permit(:subject, :content, :user_id, :house_id, :reply)
+  end
 end

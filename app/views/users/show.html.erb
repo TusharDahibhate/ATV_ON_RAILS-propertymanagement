@@ -1,3 +1,5 @@
+<h1>User:</h1>
+<br>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -25,6 +27,11 @@
   <%= @user.is_househunter %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', @previous_url %>
+<%= link_to 'Edit', edit_user_path(@user) %>
+<br>
+<%= link_to 'Back', users_path %>
+<br>
+<%= link_to 'Back to dashboard', admin_path %>
+<br>
 <%= link_to 'Logout', logout_path %>
+<br>
