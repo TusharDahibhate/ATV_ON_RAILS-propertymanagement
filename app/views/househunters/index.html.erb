@@ -22,7 +22,7 @@
       <td><%= househunter.contact_method %></td>
       <td><%= link_to 'Show', househunter %></td>
       <td><%= link_to 'Edit', edit_househunter_path(househunter) %></td>
-      <td><%= link_to 'Destroy', househunter, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td><%= link_to 'Destroy', househunter, :method => :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
   </tbody>
