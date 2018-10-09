@@ -37,6 +37,10 @@
 <% if @role == "admin" %>
   <%= link_to 'Back to Dashboard', admin_path %> <br>
 <% end %>
+<br>
+<% if @switchable == true %>
+  <%= link_to "Switch to Realtor's profile", "/hswitch"%> <br>
+<% end %>
 
 <br>
 <%= link_to 'Logout', logout_path %><br>

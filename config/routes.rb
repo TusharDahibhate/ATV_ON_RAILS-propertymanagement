@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   get   '/potential',to: "realtors#potential"
   get    '/admin',            to: 'admin#show', as: :admin
   get     '/edit/admin',      to: 'admin#edit'
+  get     '/rswitch',         to: 'realtors#switch'
+  get     '/hswitch',         to: 'househunters#switch'
 end

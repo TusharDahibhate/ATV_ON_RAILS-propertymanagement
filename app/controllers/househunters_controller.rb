@@ -20,6 +20,10 @@ class HousehuntersController < ApplicationController
     if @role == "househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])
     end
+    user = User.find(session[:user_id])
+    if user.is_realtor == true
+      @switchable = true
+    end
   end
 
   # GET /househunters/new
@@ -194,6 +198,11 @@ class HousehuntersController < ApplicationController
       @realtor = Realtor.find_by(:users_id => session[:user_id])
       redirect_to realtor_path(@realtor), notice: "You are not allowed to access that url"
     end
+  end
+
+  def switch
+    session[:role] = 'realtor'
+    redirect_to login_path
   end
 
   private

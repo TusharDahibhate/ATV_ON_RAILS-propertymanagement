@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-# todo: project limitation at : https://docs.google.com/document/d/128QlWRbpKavWIGBwq1zc4BUGBfW8S0b535kLORIHn4Y/edit?usp=sharing
-# todo : Restrict - Househunter login gives access to realtor pages too.
+# todo: project limitation at : https://docs.google.com/document/d/128QlWRbp
 
 class LoginController < ApplicationController
   def new
@@ -9,8 +7,13 @@ class LoginController < ApplicationController
       fl = true
     end
     if session[:user_id] != nil
-      redir = user_path(session[:user_id])
-      fl = true
+      if session[:role] == "realtor"
+        fl = true
+        redir = realtor_path(Realtor.find_by(users_id: session[:user_id]).id)
+      elsif session[:role] == "househunter"
+        fl = true
+        redir = househunter_path(Househunter.find_by(users_id: session[:user_id]).id)
+      end
     end
     if fl == true
       redirect_to redir
@@ -27,15 +30,11 @@ class LoginController < ApplicationController
       redir = admin_path
     else
       # If not admin, set appropriate levels
-      puts "--------------------------------------------Else"
       user = User.find_by(email_id: params[:login][:email].downcase)
-      puts "--------------------------------------------Found user"
       if user && user.password == params[:login][:password]
         session[:user_id] = user.id
         session[:logged_in] = true
         if params[:login][:role] == 'realtor'
-
-          puts "--------------------------------------------Rel"
           if user.is_realtor != nil && user.is_realtor == true
             session[:is_realtor] = true
             session[:role] = 'realtor'

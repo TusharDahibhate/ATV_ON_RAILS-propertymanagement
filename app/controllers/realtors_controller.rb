@@ -154,9 +154,8 @@ class RealtorsController < ApplicationController
   end
 
   def switch
-    if session[:role] == 'househunter'
-      redirect_to login_path
-    end
+    session[:role] = 'househunter'
+    redirect_to login_path
   end
 
   private
