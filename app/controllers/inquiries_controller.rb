@@ -12,6 +12,7 @@ class InquiriesController < ApplicationController
     elsif @role == "realtor"
       @realtor = Realtor.find_by(:users_id => session[:user_id])
       @inquiries = Inquiry.joins("INNER JOIN houses h ON houses_id = h.id WHERE h.companies_id = #{@realtor.companies_id}")
+
     end
   end
 
