@@ -186,6 +186,7 @@ class HousehuntersController < ApplicationController
         str = str + " AND owner_name='#{params[:owner_name]}' "
       end
     end
+    @houses =House.find_by_sql(["SELECT * FROM houses WHERE " +str])
   end
 
   def check_access(role)
