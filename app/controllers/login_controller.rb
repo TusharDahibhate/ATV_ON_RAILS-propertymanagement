@@ -18,6 +18,7 @@ class LoginController < ApplicationController
   end
 
   def create
+    puts "--------------------------------------------1"
     # Verify if admin
     if params[:login][:email] == 'admin@admin' && params[:login][:password] == 'admin'
       session[:is_admin] = true
@@ -26,11 +27,15 @@ class LoginController < ApplicationController
       redir = admin_path
     else
       # If not admin, set appropriate levels
+      puts "--------------------------------------------Else"
       user = User.find_by(email_id: params[:login][:email].downcase)
+      puts "--------------------------------------------Found user"
       if user && user.password == params[:login][:password]
         session[:user_id] = user.id
         session[:logged_in] = true
         if params[:login][:role] == 'realtor'
+
+          puts "--------------------------------------------Rel"
           if user.is_realtor != nil && user.is_realtor == true
             session[:is_realtor] = true
             session[:role] = 'realtor'
@@ -44,9 +49,7 @@ class LoginController < ApplicationController
           end
         end
       else
-        respond_to do |format|
-          format.html {redirect_to login_path, flash: {error: 'Invalid Credentials'}} and return
-        end
+        redirect_to login_path, notice: 'Invalid Credentials' and return
       end
     end
 
@@ -55,6 +58,8 @@ class LoginController < ApplicationController
       reset_session
       flash.notice = 'Please select a role that you are registered for.'
     end
+    puts "---------------------------------------------"
+    puts redir.inspect
     redirect_to redir
   end
 

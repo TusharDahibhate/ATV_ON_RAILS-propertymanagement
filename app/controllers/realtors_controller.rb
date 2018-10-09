@@ -17,9 +17,14 @@ class RealtorsController < ApplicationController
   def show
     @role = session[:role]
     check_access(@role)
+    # Show company name if realtor belongs to company
     @realtor = Realtor.find(params[:id])
     if @realtor.companies_id != nil
       @company = Company.find(@realtor.companies_id)
+    end
+    user = User.find(session[:user_id])
+    if user.is_househunter == true
+      @switchable = true
     end
   end
 
@@ -35,8 +40,7 @@ class RealtorsController < ApplicationController
     @role = session[:role]
     check_access(@role)
     @realtor = Realtor.find(params[:id])
-    @selected = 2
-    @companies = Company.all
+    @companies = Company.all # To populate dropdown
     if @realtor.companies_id != nil
       @company = @realtor.companies_id
     end
@@ -84,24 +88,25 @@ class RealtorsController < ApplicationController
       end
     end
   end
+
   def potential
     #session[:previous_url] = request.referer
     rel = Realtor.find_by(users_id: session[:user_id])
     puts rel.id
     @com = Company.find(rel.companies_id)
-    @house = House.where(:companies_id=>@com.id)
+    @house = House.where(:companies_id => @com.id)
     #hh = Hash.new
-    fh=Hash.new
-    @fu=Hash.new
-    i=0
-    j=0
+    fh = Hash.new
+    @fu = Hash.new
+    i = 0
+    j = 0
     puts @house
     @house.each do |h|
 
-      hh=InterestedHousehunter.where(:house_id => h[:id])
+      hh = InterestedHousehunter.where(:house_id => h[:id])
       unless hh.empty?
-        @fu[i]=Househunter.where(:id=>hh[0][:househunter_id])
-        i=i+1
+        @fu[i] = Househunter.where(:id => hh[0][:househunter_id])
+        i = i + 1
       end
       #fh[i]={h.id=>h,hh[h.id][:househunter_id]=>fu[hh[h.id][:househunter_id]]}
       #i=i+1
@@ -145,6 +150,12 @@ class RealtorsController < ApplicationController
     if role == "househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])
       redirect_to househunter_path(@househunter), notice: "You are not allowed to access that url"
+    end
+  end
+
+  def switch
+    if session[:role] == 'househunter'
+      redirect_to login_path
     end
   end
 
