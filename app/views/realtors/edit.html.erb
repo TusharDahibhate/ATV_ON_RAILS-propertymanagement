@@ -14,12 +14,10 @@
 <% end %>
 
 <%= link_to 'Show', @realtor %> |
-<!--<%#= link_to 'Back', @previous_url %> |-->
 <%= link_to 'Create a new company', new_company_path %> |
 <% if @company != nil %>
   <%= link_to 'Edit your company', edit_company_path(@company) %>
 <% end %>
-
 
 <% if @role == "admin" %>
   <%= link_to 'Back to Dashboard', admin_path %> <br>

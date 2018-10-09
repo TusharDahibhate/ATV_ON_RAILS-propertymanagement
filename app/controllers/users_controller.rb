@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     check_access
-    @users = User.all
+    @users = User.where(is_admin: nil)
   end
 
   # GET /users/1
