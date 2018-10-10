@@ -121,8 +121,12 @@ class RealtorsController < ApplicationController
   # PATCH/PUT /realtors/1
   # PATCH/PUT /realtors/1.json
   def update
+    prev_company = @realtor.companies_id
     respond_to do |format|
       if @realtor.update(realtor_params)
+        if @realtor.companies_id != prev_company
+          House.where(companies_id: prev_company).destroy_all
+        end
         if params[:user][:password] != nil && params[:user][:password] != ""
           if User.find(session[:user_id]).update(password: params[:user][:password])
             reset_session

@@ -25,13 +25,15 @@
 </p>
 
 <% if @role == "realtor" %>
-  <%= link_to 'Edit', edit_realtor_path(@realtor) %> <br>
+  <%= link_to 'Edit profile and company', edit_realtor_path(@realtor) %> <br>
+  <br><h2> Houses </h2>
   <%= link_to 'List new House', new_house_path %><br>
-  <%= link_to 'View houses listed by you', rel_houses_path %><br>
+  <%= link_to 'View and Edit houses listed by you', rel_houses_path %><br>
   <%= link_to 'View all listed houses', houses_path %><br>
+  <h2> Buyers </h2>
   <%= link_to 'View list of potential buyers', potential_path %><br>
   <%= link_to 'View list of all inquiries', inquiries_path %><br>
-<% end %>
+<% end %><br>
 <%= link_to 'Logout', logout_path %>
 
 <br>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bfd8d1e3-6da7-441e-ae5e-f796846637a3" name="Default Changelist" comment="Added google login for realtor.&#10;Note: Need to change authorized redirect URL at  console.cloud.google.com for it to work once hosted.">
+    <list default="true" id="bfd8d1e3-6da7-441e-ae5e-f796846637a3" name="Default Changelist" comment="Fixed bugs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20181010030222_refine_referential_integrities.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20181010030222_refine_referential_integrities.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/companies_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/companies_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/realtors_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/realtors_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/companies/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/companies/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/realtors/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/realtors/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/realtors/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/realtors/show.html.erb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,10 +94,10 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Gemfile" value="2" />
-          <entry key="erb" value="140" />
+          <entry key="erb" value="143" />
           <entry key="jbuilder" value="3" />
           <entry key="log" value="12" />
-          <entry key="rb" value="235" />
+          <entry key="rb" value="243" />
           <entry key="sql" value="3" />
           <entry key="yml" value="4" />
         </counts>
@@ -103,8 +105,8 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Log" value="12" />
-          <entry key="RHTML" value="140" />
-          <entry key="Ruby" value="240" />
+          <entry key="RHTML" value="143" />
+          <entry key="Ruby" value="248" />
           <entry key="Scratch" value="3" />
           <entry key="YAML" value="4" />
         </counts>
@@ -112,17 +114,17 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Gemfile" value="30" />
-          <entry key="erb" value="2921" />
-          <entry key="rb" value="60590" />
-          <entry key="txt" value="2743" />
+          <entry key="erb" value="3003" />
+          <entry key="rb" value="60931" />
+          <entry key="txt" value="2754" />
           <entry key="yml" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="2743" />
-          <entry key="RHTML" value="2921" />
-          <entry key="Ruby" value="60620" />
+          <entry key="PLAIN_TEXT" value="2754" />
+          <entry key="RHTML" value="3003" />
+          <entry key="Ruby" value="60961" />
           <entry key="YAML" value="13" />
         </counts>
       </usages-collector>
@@ -165,10 +167,50 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/schema.rb">
+        <entry file="file://$PROJECT_DIR$/app/controllers/realtors_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1442">
-              <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
+            <state relative-caret-position="304">
+              <caret line="128" column="10" lean-forward="true" selection-start-line="128" selection-start-column="10" selection-end-line="128" selection-end-column="10" />
+              <folding>
+                <element signature="e#163#365#0" />
+                <element signature="e#228#331#0" />
+                <element signature="e#414#866#0" />
+                <element signature="e#573#665#0" />
+                <element signature="e#670#860#0" />
+                <element signature="e#785#852#0" />
+                <element signature="e#892#983#0" />
+                <element signature="e#1169#1247#0" />
+                <element signature="e#1300#2855#0" />
+                <element signature="e#1384#2849#0" />
+                <element signature="e#1414#2020#1" />
+                <element signature="e#1592#2010#0" />
+                <element signature="e#1726#1922#0" />
+                <element signature="e#2158#2841#0" />
+                <element signature="e#2178#2831#2" />
+                <element signature="e#2241#2626#0" />
+                <element signature="e#2282#2351#0" />
+                <element signature="e#2376#2428#0" />
+                <element signature="e#2468#2526#0" />
+                <element signature="e#2551#2612#0" />
+                <element signature="e#2662#2738#0" />
+                <element signature="e#2761#2819#0" />
+                <element signature="e#2859#3523#0" />
+                <element signature="e#3265#3375#0" />
+                <element signature="e#3191#3476#0" />
+                <element signature="e#3599#5985#1" />
+                <element signature="e#4416#4813#0" />
+                <element signature="e#4483#4621#0" />
+                <element signature="e#4659#4807#0" />
+                <element signature="e#4689#4762#0" />
+                <element signature="e#4781#4799#0" />
+                <element signature="e#4817#5054#0" />
+                <element signature="e#4844#5048#2" />
+                <element signature="e#5058#5136#0" />
+                <element signature="e#5140#5388#0" />
+                <element signature="e#5475#5537#0" />
+                <element signature="e#5628#5753#0" />
+                <element signature="e#5815#5932#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -207,8 +249,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/views/companies/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/househunters/input.html.erb" />
         <option value="$PROJECT_DIR$/app/views/househunters/search.html.erb" />
         <option value="$PROJECT_DIR$/app/views/houses/addimages.html.erb" />
         <option value="$PROJECT_DIR$/app/views/houses/realtorhouses.html.erb" />
@@ -229,10 +269,8 @@
         <option value="$PROJECT_DIR$/app/views/admin/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/admin_controller.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
-        <option value="$PROJECT_DIR$/app/views/realtors/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/houses/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/realtors/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/realtors/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/househunters/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/househunters/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/househunters_controller.rb" />
@@ -245,7 +283,6 @@
         <option value="$PROJECT_DIR$/db/migrate/20181010025727_change_houses_table.rb" />
         <option value="$PROJECT_DIR$/app/views/admin/show.html.erb" />
         <option value="$PROJECT_DIR$/db/schema.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/houses_controller.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/initializers/omniauth.rb" />
         <option value="$PROJECT_DIR$/app/models/realtor.rb" />
@@ -255,9 +292,14 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/login/new.html.erb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/realtors_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20181010030222_refine_referential_integrities.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/companies_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/companies/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/realtors/edit.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/realtors/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/houses_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/realtors_controller.rb" />
       </list>
     </option>
   </component>
@@ -308,23 +350,19 @@
               <item name="Assignment_2_Rails_Ubuntu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="models" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="views" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Assignment_2_Rails_Ubuntu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="views" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="realtors" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="Assignment_2_Rails_Ubuntu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="config" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Assignment_2_Rails_Ubuntu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="db" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Assignment_2_Rails_Ubuntu" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="db" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="migrate" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -647,7 +685,7 @@
       <workItem from="1538802135108" duration="1421000" />
       <workItem from="1538959481911" duration="1896000" />
       <workItem from="1539045430216" duration="9068000" />
-      <workItem from="1539122030744" duration="19657000" />
+      <workItem from="1539122030744" duration="23216000" />
     </task>
     <task id="LOCAL-00001" summary="Added realtor registration">
       <created>1538268757295</created>
@@ -901,11 +939,18 @@
       <option name="project" value="LOCAL" />
       <updated>1539148649430</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Fixed bugs.">
+      <created>1539211823936</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1539211823936</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101246000" />
+    <option name="totallyTimeSpent" value="104805000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -918,8 +963,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28560606" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28560606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -932,7 +978,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32843137" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49621212" visible="true" weight="0.31045753" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49621212" visible="true" weight="0.11764706" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5037879" side_tool="true" weight="0.32189542" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32976827" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -996,7 +1042,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added role that user is currently logged in as" />
     <MESSAGE value="1. Only admin and creator can delete houses&#10;2. Removed edit and destroy in houses#index for all except admin&#10;3. Fixed bugs&#10;4. Realtors can view all houses &amp; houses listed by him." />
     <MESSAGE value="1. Realtor can upload image for house" />
     <MESSAGE value="Fixed house display created by a previous merge/rebase" />
@@ -1021,40 +1066,10 @@
     <MESSAGE value="Refined migrations&#10;Solved bugs" />
     <MESSAGE value="Fixed bug - house edit by realtor" />
     <MESSAGE value="Added google login for realtor.&#10;Note: Need to change authorized redirect URL at  console.cloud.google.com for it to work once hosted." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added google login for realtor.&#10;Note: Need to change authorized redirect URL at  console.cloud.google.com for it to work once hosted." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/houses_controller.rb</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Fixed bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/houses/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/houses/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/companies_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-665">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1101,13 +1116,6 @@
     <entry file="file://$PROJECT_DIR$/log/development.log">
       <provider selected="true" editor-type-id="LogFileEditorProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/realtors/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="42" selection-start-line="42" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/realtors/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -1115,24 +1123,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/househunters_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="96" column="13" lean-forward="true" selection-start-line="96" selection-start-column="13" selection-end-line="96" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/househunters/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/realtors/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" selection-start-line="2" selection-end-line="14" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1239,20 +1233,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/houses_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="80" column="33" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
-          <folding>
-            <element signature="e#155#471#0" />
-            <element signature="e#265#465#0" />
-            <element signature="e#516#1035#0" />
-            <element signature="e#1039#1372#0" />
-            <element signature="e#1396#2023#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1322,13 +1302,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/login/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1350,17 +1323,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/realtors_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="145" column="50" selection-start-line="145" selection-start-column="50" selection-end-line="145" selection-end-column="50" />
-          <folding>
-            <element signature="e#163#365#0" />
-            <element signature="e#228#331#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20181010030222_refine_referential_integrities.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1375,10 +1337,248 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/companies/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="46" column="9" lean-forward="true" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/companies_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/realtors/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/realtors/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/househunters_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="136" column="12" selection-start-line="136" selection-start-column="12" selection-end-line="136" selection-end-column="12" />
+          <folding>
+            <element signature="e#55#8588#1" />
+            <element signature="e#179#377#0" />
+            <element signature="e#256#371#0" />
+            <element signature="e#55#8588#1" />
+            <element signature="e#434#802#0" />
+            <element signature="e#586#692#0" />
+            <element signature="e#737#796#0" />
+            <element signature="e#832#931#0" />
+            <element signature="e#964#1078#0" />
+            <element signature="e#55#8588#1" />
+            <element signature="e#1133#2626#0" />
+            <element signature="e#1217#2620#0" />
+            <element signature="e#1247#1866#1" />
+            <element signature="e#1438#1856#0" />
+            <element signature="e#1570#1768#0" />
+            <element signature="e#2020#2612#0" />
+            <element signature="e#2040#2602#2" />
+            <element signature="e#2107#2460#0" />
+            <element signature="e#2152#2226#0" />
+            <element signature="e#2251#2307#0" />
+            <element signature="e#2347#2360#0" />
+            <element signature="e#2385#2446#0" />
+            <element signature="e#2496#2509#0" />
+            <element signature="e#2532#2590#0" />
+            <element signature="e#55#8588#1" />
+            <element signature="e#2695#3493#0" />
+            <element signature="e#2721#3487#0" />
+            <element signature="e#2739#3479#2" />
+            <element signature="e#2790#3169#0" />
+            <element signature="e#2869#3157#1" />
+            <element signature="e#3190#3265#0" />
+            <element signature="e#3286#3337#0" />
+            <element signature="e#3369#3383#0" />
+            <element signature="e#3404#3469#0" />
+            <element signature="e#55#8588#1" />
+            <element signature="e#3556#3970#0" />
+            <element signature="e#3654#3792#0" />
+            <element signature="e#3808#3964#0" />
+            <element signature="e#3838#3919#0" />
+            <element signature="e#3938#3956#0" />
+            <element signature="e#3974#4238#0" />
+            <element signature="e#4052#4232#0" />
+            <element signature="e#4242#7787#0" />
+            <element signature="e#4284#4464#0" />
+            <element signature="e#4484#4705#0" />
+            <element signature="e#4545#4697#1" />
+            <element signature="e#4710#5234#0" />
+            <element signature="e#4833#4945#0" />
+            <element signature="e#4952#5067#0" />
+            <element signature="e#5074#5226#0" />
+            <element signature="e#5239#5837#0" />
+            <element signature="e#5388#5518#0" />
+            <element signature="e#5525#5658#0" />
+            <element signature="e#5665#5829#0" />
+            <element signature="e#5843#6048#0" />
+            <element signature="e#5898#6040#1" />
+            <element signature="e#6053#6649#0" />
+            <element signature="e#6200#6330#0" />
+            <element signature="e#6337#6470#0" />
+            <element signature="e#6477#6641#0" />
+            <element signature="e#6655#7256#0" />
+            <element signature="e#6806#6939#0" />
+            <element signature="e#6946#7075#0" />
+            <element signature="e#7082#7248#0" />
+            <element signature="e#7261#7476#0" />
+            <element signature="e#7322#7468#1" />
+            <element signature="e#7481#7712#0" />
+            <element signature="e#7546#7704#1" />
+            <element signature="e#7791#8008#0" />
+            <element signature="e#7818#8002#2" />
+            <element signature="e#8012#8086#0" />
+            <element signature="e#8173#8247#0" />
+            <element signature="e#8338#8467#0" />
+            <element signature="e#8471#8588#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/did_you_mean-1.1.0/lib/did_you_mean/core_ext/name_error.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/houses_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+          <folding>
+            <element signature="e#49#6776#1" />
+            <element signature="e#155#471#0" />
+            <element signature="e#265#465#0" />
+            <element signature="e#49#6776#1" />
+            <element signature="e#516#1035#0" />
+            <element signature="e#705#1028#0" />
+            <element signature="e#1396#2023#0" />
+            <element signature="e#1624#2017#0" />
+            <element signature="e#1809#2009#0" />
+            <element signature="e#2050#2787#0" />
+            <element signature="e#2197#2525#0" />
+            <element signature="e#2416#2517#0" />
+            <element signature="e#2531#2735#0" />
+            <element signature="e#2559#2727#1" />
+            <element signature="e#49#6776#1" />
+            <element signature="e#2830#3463#0" />
+            <element signature="e#2942#3064#0" />
+            <element signature="e#3080#3457#0" />
+            <element signature="e#3098#3449#2" />
+            <element signature="e#3133#3201#0" />
+            <element signature="e#3222#3272#0" />
+            <element signature="e#3304#3359#0" />
+            <element signature="e#3380#3439#0" />
+            <element signature="e#3467#3937#0" />
+            <element signature="e#3485#3931#2" />
+            <element signature="e#3622#3783#0" />
+            <element signature="e#49#6776#1" />
+            <element signature="e#3994#4368#0" />
+            <element signature="e#4020#4362#0" />
+            <element signature="e#4038#4354#2" />
+            <element signature="e#4089#4152#0" />
+            <element signature="e#4173#4218#0" />
+            <element signature="e#4250#4264#0" />
+            <element signature="e#4285#4344#0" />
+            <element signature="e#49#6776#1" />
+            <element signature="e#4419#4875#0" />
+            <element signature="e#4435#4690#0" />
+            <element signature="e#4531#4682#0" />
+            <element signature="e#4725#4869#0" />
+            <element signature="e#4755#4824#0" />
+            <element signature="e#4843#4861#0" />
+            <element signature="e#4879#5612#0" />
+            <element signature="e#5100#5605#0" />
+            <element signature="e#5118#5597#2" />
+            <element signature="e#5165#5243#0" />
+            <element signature="e#5379#5587#0" />
+            <element signature="e#5433#5485#0" />
+            <element signature="e#5521#5575#0" />
+            <element signature="e#5616#6115#0" />
+            <element signature="e#5841#6109#0" />
+            <element signature="e#5859#6101#2" />
+            <element signature="e#5914#6005#0" />
+            <element signature="e#6037#6091#0" />
+            <element signature="e#6119#6356#0" />
+            <element signature="e#6146#6350#2" />
+            <element signature="e#6443#6499#0" />
+            <element signature="e#6590#6776#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1442">
-          <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
+        <state relative-caret-position="335">
+          <caret line="70" column="25" lean-forward="true" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/realtors_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="128" column="10" lean-forward="true" selection-start-line="128" selection-start-column="10" selection-end-line="128" selection-end-column="10" />
+          <folding>
+            <element signature="e#163#365#0" />
+            <element signature="e#228#331#0" />
+            <element signature="e#414#866#0" />
+            <element signature="e#573#665#0" />
+            <element signature="e#670#860#0" />
+            <element signature="e#785#852#0" />
+            <element signature="e#892#983#0" />
+            <element signature="e#1169#1247#0" />
+            <element signature="e#1300#2855#0" />
+            <element signature="e#1384#2849#0" />
+            <element signature="e#1414#2020#1" />
+            <element signature="e#1592#2010#0" />
+            <element signature="e#1726#1922#0" />
+            <element signature="e#2158#2841#0" />
+            <element signature="e#2178#2831#2" />
+            <element signature="e#2241#2626#0" />
+            <element signature="e#2282#2351#0" />
+            <element signature="e#2376#2428#0" />
+            <element signature="e#2468#2526#0" />
+            <element signature="e#2551#2612#0" />
+            <element signature="e#2662#2738#0" />
+            <element signature="e#2761#2819#0" />
+            <element signature="e#2859#3523#0" />
+            <element signature="e#3265#3375#0" />
+            <element signature="e#3191#3476#0" />
+            <element signature="e#3599#5985#1" />
+            <element signature="e#4416#4813#0" />
+            <element signature="e#4483#4621#0" />
+            <element signature="e#4659#4807#0" />
+            <element signature="e#4689#4762#0" />
+            <element signature="e#4781#4799#0" />
+            <element signature="e#4817#5054#0" />
+            <element signature="e#4844#5048#2" />
+            <element signature="e#5058#5136#0" />
+            <element signature="e#5140#5388#0" />
+            <element signature="e#5475#5537#0" />
+            <element signature="e#5628#5753#0" />
+            <element signature="e#5815#5932#0" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -14,10 +14,10 @@
   <%= f.submit "Update Fields" %><br><br>
 <% end %>
 
-<%= link_to 'Show', @realtor %> |
-<%= link_to 'Create a new company', new_company_path %> |
+<%= link_to 'Show', @realtor %> <br>
+<%= link_to 'Create a new company', new_company_path %>  <br>
 <% if @company != nil %>
-  <%= link_to 'Edit your company', edit_company_path(@company) %>
+  <%= link_to 'Edit your company', edit_company_path(@company) %> <br>
 <% end %>
 
 <% if @role == "admin" %>

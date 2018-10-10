@@ -17,9 +17,6 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @role = session[:role]
-    if @role == "househunter"
-      @househunter = Househunter.find_by(:users_id => session[:user_id])
-    end
   end
 
   # GET /companies/new
