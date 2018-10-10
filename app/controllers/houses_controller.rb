@@ -68,6 +68,7 @@ class HousesController < ApplicationController
     session[:previous_url] = request.referer
     @role = session[:role]
     check_access(@role)
+
     @house = House.find(params[:id])
     if !session[:is_admin].nil? && session[:is_admin] == true
       @admin = true

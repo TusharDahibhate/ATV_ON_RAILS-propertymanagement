@@ -22,11 +22,11 @@
 </p>
 
 <% if @role == "househunter" %>
+  <%= link_to 'Edit Profile', edit_househunter_path(@househunter) %>
+  <br>
   <%= link_to 'Show Houses', houses_path %>
   <br>
   <%= link_to 'Show Real estate companies', companies_path %>
-  <br>
-  <%= link_to 'Edit Profile', edit_househunter_path(@househunter) %>
   <br>
   <%= link_to 'Show Inquiries', househunter_inquiries_path(@househunter) %>
 
@@ -44,5 +44,3 @@
 
 <br>
 <%= link_to 'Logout', logout_path %><br>
-
-

@@ -52,7 +52,7 @@ class RealtorsController < ApplicationController
     existing_user = User.find_by(email_id: params[:user][:email_id])
     if existing_user != nil
       if existing_user.is_realtor == true
-        redirect_to logout_path, notice: "You are already registered as an Realtor"
+        redirect_to login_path, notice: 'You are already registered as an Realtor'
       else
         existing_user.is_realtor = true
         if existing_user.save
@@ -78,11 +78,11 @@ class RealtorsController < ApplicationController
             format.html {redirect_to login_path, notice: 'Realtor was successfully created.'}
             format.json {render :show, status: :created, location: @realtor}
           else
-            format.html {render :new}
+            format.html {redirect_to login_path, notice: 'Error creating realtor'}
             format.json {render json: @realtor.errors, status: :unprocessable_entity}
           end
         else
-          format.html {render :new}
+          format.html {redirect_to login_path, notice: 'Error creating user. Please check input.'}
           format.json {render json: @user.errors, status: :unprocessable_entity}
         end
       end
@@ -119,6 +119,14 @@ class RealtorsController < ApplicationController
   def update
     respond_to do |format|
       if @realtor.update(realtor_params)
+        if params[:user][:password] != nil && params[:user][:password] != ""
+          if User.find(session[:user_id]).update(password: params[:user][:password])
+            reset_session
+            redirect_to login_path, notice: 'Password successfully changed' and return
+          else
+            redirect_to @realtor, notice: 'Error changing password'
+          end
+        end
         format.html {redirect_to @realtor, notice: 'Realtor was successfully updated.'}
         format.json {render :show, status: :ok, location: @realtor}
       else
