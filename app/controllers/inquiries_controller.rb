@@ -62,6 +62,15 @@ class InquiriesController < ApplicationController
   # PATCH/PUT /inquiries/1
   # PATCH/PUT /inquiries/1.json
   def update
+
+    if session[:role] == "realtor"
+      @househunter = Househunter.find_by(@inquiry.househunters_id)
+      @user = User.find_by(:id => @househunter.users_id)
+      if params[:reply] !=nil or params[:reply] != ""
+        UserMailer.welcome_email.deliver_now(@user.email_id)
+      end
+    end
+
     respond_to do |format|
       if @inquiry.update(inquiry_params)
         format.html {redirect_to inquiries_path, notice: 'Inquiry was successfully updated.'}

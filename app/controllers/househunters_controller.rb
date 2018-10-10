@@ -14,7 +14,9 @@ class HousehuntersController < ApplicationController
   # GET /househunters/1
   # GET /househunters/1.json
   def show
+
     @user = User.find(@househunter.users_id)
+    #UserMailer.welcome_email.deliver_now
     @role = session[:role]
     check_access(@role)
     if @role == "househunter"
