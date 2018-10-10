@@ -88,6 +88,14 @@ class HousehuntersController < ApplicationController
   def update
     respond_to do |format|
       if @househunter.update(househunter_params)
+        if params[:user][:password] != nil && params[:user][:password] != ""
+          if User.find(session[:user_id]).update(password: params[:user][:password])
+            reset_session
+            redirect_to login_path, notice: 'Password successfully changed' and return
+          else
+            redirect_to @househunter, notice: 'Error changing password'
+          end
+        end
         format.html {redirect_to @househunter, notice: 'Househunter was successfully updated.'}
         format.json {render :show, status: :ok, location: @househunter}
       else

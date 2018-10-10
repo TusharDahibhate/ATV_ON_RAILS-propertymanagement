@@ -1,9 +1,6 @@
 admin username: admin@admin
-
 password: admin
 
-Admin does not need to select a role while logging in.
-
-Known issues: 
-1. After logging in, anyone can access any URL. Access control needs to be enhanced.
-2. Front end validations are not employed.
+Few things to note: 
+1. Admin can not create houses, but he can edit and destroy houses. Letting admin create houses causes instability with other operations (Where should interested list be shown?)
+2. Interest in house and inquiries can be posted by house hunter while seeing an individual house.

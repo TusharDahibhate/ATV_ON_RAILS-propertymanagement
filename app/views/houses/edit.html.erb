@@ -1,12 +1,9 @@
 <h1>Editing House</h1>
 
-
-<p id="notice"><%= notice %></p>
-
 <%= form_for @house do |f| %>
 
   Company:
-  <% if @admin == true %>
+  <% if @role == 'admin' %>
     <% options = options_from_collection_for_select(@companies, 'id', 'name') %>
     <%= f.select "companies_id", options %><br>
   <% else %>
@@ -28,20 +25,18 @@
   <%= f.text_field :owner_name %><br>
   Basement:  <%= f.check_box :basement %><br>
   Add MORE images: <br><%= f.file_field :images, multiple: true %><br><br>
-
   <%= f.submit "Update House" %>
 <% end %>
 
 
+<%= link_to 'Show', @house %>
 
 <%= link_to 'Back', @previous_url %>
 
 
-<%= link_to 'Show', @house %>
-
-<% if @role == "admin" %>
+<% if @role == 'admin' %>
   <%= link_to 'Back to Dashboard', admin_path %> <br>
-<% elsif @role == "realtor" %>
+<% elsif @role == 'realtor' %>
   <%= link_to 'Back to Dashboard', realtor_path(@realtor) %> <br>
 <% end %>
 
