@@ -153,16 +153,16 @@ class HousesController < ApplicationController
   end
 
   def interested
-
+    puts "-0-==--------------------------------------------------"
+    puts params.inspect
     @househunter = Househunter.find_by(users_id: session[:user_id])
-
     @interested_househunter = InterestedHousehunter.find_by(:house_id => params[:id], :househunter_id => @househunter.id)
 
     respond_to do |format|
       if @interested_househunter
         format.html {redirect_to request.referer, notice: 'Already present in the interest list!'}
       else
-        @interested_househunter = InterestedHousehunter.new(:house_id => params[:id], :househunter_id => @househunter.id)
+        @interested_househunter = InterestedHousehunter.new(house_id: params[:id], househunter_id: @househunter.id)
         if @interested_househunter.save
           format.html {redirect_to request.referer, notice: 'Successful!'}
         else

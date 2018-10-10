@@ -47,13 +47,15 @@
   <%= @house.owner_name %>
 </p>
 <% if @role == "househunter" %>
-  <%= form_with(url: "/house_interested", method: "post") do %>
-    <%= label_tag("Are you interested in this house?") %>
+
+  <%= form_for @househunter, url: '/house_interested' do |f| %>
     <input type="hidden" id="id" name="id" value="<%= @houseid %>"/>
-    <%= submit_tag("Yes! I am interested") %>
+    <%= f.submit "Interested in this house" %><br>
   <% end %>
+
   <br>
   <%= link_to 'Submit an enquiry', test_path(@houseid) %>
+
 <% end %>
 
 <% if @role != "househunter" %>
