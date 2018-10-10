@@ -22,9 +22,13 @@ class RealtorsController < ApplicationController
     if @realtor.companies_id != nil
       @company = Company.find(@realtor.companies_id)
     end
-    user = User.find(session[:user_id])
-    if user.is_househunter == true
-      @switchable = true
+    if session[:role] == 'admin'
+      redirect_to login_path
+    else
+      user = User.find(session[:user_id])
+      if user.is_househunter == true
+        @switchable = true
+      end
     end
   end
 

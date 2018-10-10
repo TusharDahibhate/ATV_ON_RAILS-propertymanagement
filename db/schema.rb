@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_041808) do
+ActiveRecord::Schema.define(version: 2018_10_10_030222) do
 
-  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_041808) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_041808) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "website"
     t.text "address"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_041808) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "househunters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "househunters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.integer "phone"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2018_10_05_041808) do
     t.index ["users_id"], name: "index_househunters_on_users_id"
   end
 
-  create_table "houses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "houses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "companies_id"
     t.text "location"
     t.string "area"
@@ -72,9 +72,10 @@ ActiveRecord::Schema.define(version: 2018_10_05_041808) do
     t.index ["companies_id"], name: "index_houses_on_companies_id"
   end
 
-  create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "subject"
     t.text "content"
+    t.text "reply"
     t.bigint "househunters_id"
     t.bigint "houses_id"
     t.datetime "created_at", null: false
@@ -83,14 +84,14 @@ ActiveRecord::Schema.define(version: 2018_10_05_041808) do
     t.index ["houses_id"], name: "index_inquiries_on_houses_id"
   end
 
-  create_table "interested_househunters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "interested_househunters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "house_id"
     t.integer "househunter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "realtors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "realtors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.bigint "companies_id"
@@ -102,19 +103,9 @@ ActiveRecord::Schema.define(version: 2018_10_05_041808) do
     t.index ["users_id"], name: "index_realtors_on_users_id"
   end
 
-  create_table "realtors_houses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "realtors_id"
-    t.bigint "houses_id"
-    t.index ["houses_id"], name: "index_realtors_houses_on_houses_id"
-    t.index ["realtors_id"], name: "index_realtors_houses_on_realtors_id"
-  end
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email_id"
     t.string "password"
-    t.string "provider"
-    t.string "oauth_token"
-    t.datetime "oauth_expires_at"
     t.boolean "is_admin"
     t.boolean "is_realtor"
     t.boolean "is_househunter"
@@ -128,6 +119,4 @@ ActiveRecord::Schema.define(version: 2018_10_05_041808) do
   add_foreign_key "inquiries", "houses", column: "houses_id", on_delete: :cascade
   add_foreign_key "realtors", "companies", column: "companies_id", on_delete: :nullify
   add_foreign_key "realtors", "users", column: "users_id", on_delete: :cascade
-  add_foreign_key "realtors_houses", "houses", column: "houses_id", on_delete: :cascade
-  add_foreign_key "realtors_houses", "realtors", column: "realtors_id", on_delete: :cascade
 end
