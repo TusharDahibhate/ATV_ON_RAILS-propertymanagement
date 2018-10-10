@@ -60,9 +60,6 @@
   <%= link_to 'Edit', edit_house_path(@house) %><br>
 <% end %>
 
-<% @house.images.each do |image| %>
-  <%= image_tag image %> <br/>
-<% end %>
 <br>
 <%= link_to 'Back', @previous_url %>
 <br>
@@ -74,3 +71,6 @@
   <%= link_to 'Back to Dashboard', realtor_path(@realtor.id) %> <br>
 <% end %>
 
+<% @house.images.each do |image| %>
+  <%= image_tag image %> <br/>
+<% end %>
