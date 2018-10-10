@@ -149,20 +149,45 @@ class HousehuntersController < ApplicationController
         str = str + "AND location = '#{params[:location]}' "
       end
     end
-    if params[:area] != nil && params[:area] != ""
-      if str.empty?
-        str = str + " area = #{params[:area]} "
+    if params[:area1]==nil || params[:area1]=="" &&  params[:area2]==nil || params[:area2]==""
+      str=str+""
+    else
+      if params[:area1] == nil || params[:area1] == ""
+        mina=0
       else
-        str = str + " AND area = #{params[:area]}  "
+        mina=params[:area1]
+      end
+      if params[:area2] == nil || params[:area2] == ""
+        maxa=9999
+      else
+        maxa=params[:area2]
+      end
+      if str.empty?
+        str = str + " area BETWEEN #{mina} AND #{maxa} "
+      else
+        str = str + " AND area BETWEEN #{mina} AND #{maxa} "
       end
     end
-    if params[:year_built] != nil && params[:year_built] != ""
-      if str.empty?
-        str = str + " year_built = #{params[:year_built]} "
+    if params[:year_built1]== nil || params[:year_built1]== "" &&  params[:year_built2]==nil || params[:year_built2]==""
+      str=str+""
+    else
+      if params[:year_built1] == nil || params[:year_built1] == ""
+        miny=0
       else
-        str = str + " AND year_built = #{params[:year_built]} "
+        miny=params[:year_built1]
+      end
+      if params[:year_built2] == nil || params[:year_built2] == ""
+        maxy=9999
+      else
+        maxy=params[:year_built2]
+      end
+      if str.empty?
+        str = str + " year_built BETWEEN #{miny} AND #{maxy} "
+      else
+        str = str + " AND year_built BETWEEN #{miny} AND #{maxy} "
       end
     end
+
     if params[:style] != nil && params[:style] != ""
       if str.empty?
         str = str + " style = '#{params[:style]}' "
@@ -170,18 +195,43 @@ class HousehuntersController < ApplicationController
         str = str + " AND style = '#{params[:style]}' "
       end
     end
-    if params[:list_prize] != nil && params[:list_prize] != ""
-      if str.empty?
-        str = str + " list_prize = #{params[:list_prize]} "
+    if params[:list_prize1]==nil || params[:list_prize1]=="" &&  params[:list_prize2]==nil || params[:list_prize2]==""
+      str=str+""
+    else
+      if params[:list_prize1] == nil || params[:list_prize1] == ""
+        minl=0
       else
-        str = str + " AND list_prize = #{params[:list_prize]} "
+        minl=params[:list_prize1]
+      end
+      if params[:list_prize2] == nil || params[:list_prize2] == ""
+        maxl=9999
+      else
+        maxl=params[:list_prize2]
+      end
+      if str.empty?
+        str = str + " list_prize BETWEEN #{minl} AND #{maxl} "
+      else
+        str = str + " AND list_prize BETWEEN #{minl} AND #{maxl} "
       end
     end
-    if params[:floor_count] != nil && params[:floor_count] != ""
-      if str.empty?
-        str = str + " floor_count = #{params[:floor_count]} "
+
+    if params[:floor_count1]==nil || params[:floor_count1]=="" &&  params[:floor_count2]==nil || params[:floor_count2]==""
+      str=str+""
+    else
+      if params[:floor_count1] == nil || params[:floor_count1] == ""
+        minf=0
       else
-        str = str + " AND floor_count = #{params[:floor_count]} "
+        minf=params[:floor_count1]
+      end
+      if params[:floor_count2] == nil || params[:floor_count2] == ""
+        maxf=9999
+      else
+        maxf=params[:area2]
+      end
+      if str.empty?
+        str = str + " floor_count BETWEEN #{minf} AND #{maxf} "
+      else
+        str = str + " AND floor_count BETWEEN #{minf} AND #{maxf} "
       end
     end
     if params[:basement] != nil && params[:basement] != ""
