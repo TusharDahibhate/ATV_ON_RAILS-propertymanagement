@@ -29,7 +29,8 @@
         <td><%= link_to 'Show', company %></td>
         <% if @role != "househunter" %>
           <td><%= link_to 'Edit', edit_company_path(company) %></td>
-          <td><%= link_to 'Destroy', company, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <td><%= button_to 'Destroy', company, method: :delete, :onclick => "return confirm('Are you sure you want to delete this company?')" %>
+          </td>
         <% end %>>
       </tr>
     <% end %>

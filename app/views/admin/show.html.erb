@@ -1,5 +1,8 @@
 <h1>Admin Dashboard</h1>
 
+Welcome, <%=  "#{@admin.email_id} #{@admin.password}" %><br><br>
+
+<%= link_to 'Edit Profile', edit_admin_path  %><br>
 <br>
 <h2>Realtor:</h2>
 <%= link_to 'Create Realtor', new_realtor_path %><br>

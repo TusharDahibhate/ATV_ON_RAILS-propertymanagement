@@ -38,3 +38,8 @@
 <% if @role == "admin" %>
   <%= link_to 'Back to Dashboard', admin_path %> <br>
 <% end %>
+
+<br>
+<% if @switchable == true %>
+  <%= link_to "Switch to House Hunter's profile", "/rswitch"%> <br>
+<% end %>

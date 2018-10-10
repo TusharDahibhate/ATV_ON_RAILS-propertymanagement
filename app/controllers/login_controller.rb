@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-# todo: project limitation at : https://docs.google.com/document/d/128QlWRbpKavWIGBwq1zc4BUGBfW8S0b535kLORIHn4Y/edit?usp=sharing
-# todo : Restrict - Househunter login gives access to realtor pages too.
+# todo: project limitation at : https://docs.google.com/document/d/128QlWRbp
 
 class LoginController < ApplicationController
   def new
@@ -9,8 +7,13 @@ class LoginController < ApplicationController
       fl = true
     end
     if session[:user_id] != nil
-      redir = user_path(session[:user_id])
-      fl = true
+      if session[:role] == "realtor"
+        fl = true
+        redir = realtor_path(Realtor.find_by(users_id: session[:user_id]).id)
+      elsif session[:role] == "househunter"
+        fl = true
+        redir = househunter_path(Househunter.find_by(users_id: session[:user_id]).id)
+      end
     end
     if fl == true
       redirect_to redir
@@ -18,6 +21,7 @@ class LoginController < ApplicationController
   end
 
   def create
+    puts "--------------------------------------------1"
     # Verify if admin
     if params[:login][:email] == 'admin@admin' && params[:login][:password] == 'admin'
       session[:is_admin] = true
@@ -44,9 +48,7 @@ class LoginController < ApplicationController
           end
         end
       else
-        respond_to do |format|
-          format.html {redirect_to login_path, flash: {error: 'Invalid Credentials'}} and return
-        end
+        redirect_to login_path, notice: 'Invalid Credentials' and return
       end
     end
 
@@ -55,6 +57,8 @@ class LoginController < ApplicationController
       reset_session
       flash.notice = 'Please select a role that you are registered for.'
     end
+    puts "---------------------------------------------"
+    puts redir.inspect
     redirect_to redir
   end
 
