@@ -76,9 +76,9 @@ class HousesController < ApplicationController
       @is_listing_creator = true
       @companies = Company.all
     else
-      realtor = Realtor.find_by(users_id: session[:user_id])
-      if realtor.companies_id != nil
-        @company = Company.find(realtor.companies_id).name
+      @realtor = Realtor.find_by(users_id: session[:user_id])
+      if @realtor.companies_id != nil
+        @company = Company.find(@realtor.companies_id).name
       end
     end
 
