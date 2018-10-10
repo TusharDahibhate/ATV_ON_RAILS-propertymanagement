@@ -61,14 +61,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     check_access
-    begin
-      rel= Realtor.find_by(users_id: @user.id)
-      if !rel.nil?
-        rel.destroy
-      end
-    rescue ActiveRecord::RecordNotFound
 
-    end
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
