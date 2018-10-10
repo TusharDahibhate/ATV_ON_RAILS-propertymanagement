@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get    '/rel_houses',       to: 'houses#realtorhouses'
   post   '/house_interested', to: 'houses#interested'
   patch   '/house_interested', to: 'houses#interested'
+  patch   '/house_not_interested', to: 'houses#not_interested'
   get '/inquiry/new/:id', to: 'inquiries#new', as: :test
   get    '/addimage/:id',  to: 'houses#addimages'
   get '/househunter_inquiries/:id', to: 'inquiries#index', as: :househunter_inquiries

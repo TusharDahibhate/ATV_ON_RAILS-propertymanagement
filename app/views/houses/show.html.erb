@@ -48,9 +48,17 @@
 </p>
 <% if @role == "househunter" %>
 
-  <%= form_for @househunter, url: '/house_interested' do |f| %>
-    <input type="hidden" id="id" name="id" value="<%= @houseid %>"/>
-    <%= f.submit "Interested in this house" %><br>
+  <% if @interested_househunter == nil%>
+    <%= form_for @househunter, url: '/house_interested' do |f| %>
+      <input type="hidden" id="id" name="id" value="<%= @houseid %>"/>
+      <%= f.submit "Interested in this house" %><br>
+    <% end %>
+
+  <% else %>
+    <%= form_for @househunter, url: '/house_not_interested' do |f| %>
+      <input type="hidden" id="id" name="id" value="<%= @houseid %>"/>
+      <%= f.submit "Not Interested in this house" %><br>
+    <% end %>
   <% end %>
 
   <br>

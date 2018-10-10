@@ -24,6 +24,7 @@ class HousesController < ApplicationController
 
     if @role =="househunter"
       @househunter = Househunter.find_by(:users_id => session[:user_id])
+      @interested_househunter = InterestedHousehunter.find_by(:house_id => params[:id], :househunter_id => @househunter.id)
     elsif @role == "realtor"
       @realtor = Realtor.find_by(:users_id => session[:user_id])
     end
@@ -153,8 +154,6 @@ class HousesController < ApplicationController
   end
 
   def interested
-    puts "-0-==--------------------------------------------------"
-    puts params.inspect
     @househunter = Househunter.find_by(users_id: session[:user_id])
     @interested_househunter = InterestedHousehunter.find_by(:house_id => params[:id], :househunter_id => @househunter.id)
 
@@ -171,6 +170,19 @@ class HousesController < ApplicationController
       end
     end
 
+  end
+
+  def not_interested
+    @househunter = Househunter.find_by(users_id: session[:user_id])
+    @interested_househunter = InterestedHousehunter.find_by(:house_id => params[:id], :househunter_id => @househunter.id)
+
+    respond_to do |format|
+      if @interested_househunter.destroy
+        format.html {redirect_to request.referer, notice: 'Successfully removed house from the interest list!'}
+      else
+        format.html {redirect_to request.referer, flash: {error: 'Error'}}
+      end
+    end
   end
 
   def check_access(role)
