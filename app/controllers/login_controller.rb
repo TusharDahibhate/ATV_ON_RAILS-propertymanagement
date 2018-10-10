@@ -21,7 +21,6 @@ class LoginController < ApplicationController
   end
 
   def create
-    puts "--------------------------------------------1"
     # Verify if admin
     if params[:login][:email] == 'admin@admin' && params[:login][:password] == 'admin'
       session[:is_admin] = true

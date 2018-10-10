@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   get     '/edit/admin',      to: 'admin#edit'
   get     '/rswitch',         to: 'realtors#switch'
   get     '/hswitch',         to: 'househunters#switch'
+  get     'glogin',           to: redirect('/auth/google_oauth2'), as: 'glogin'
+  get     'auth/google_oauth2/callback', to: 'realtors#gcreate', as: 'gcreate'
 end

@@ -170,6 +170,15 @@ class RealtorsController < ApplicationController
     redirect_to login_path
   end
 
+  def gcreate
+    @user = User.find_or_create_from_auth_hash(request.env["omniauth.auth"])
+    session[:role] = 'realtor'
+    session[:user_id] = @user.id
+    session[:is_realtor] = true
+    session[:logged_in] = true
+    redirect_to login_path
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
