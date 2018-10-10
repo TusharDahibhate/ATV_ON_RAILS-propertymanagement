@@ -62,8 +62,17 @@ class InquiriesController < ApplicationController
   # PATCH/PUT /inquiries/1
   # PATCH/PUT /inquiries/1.json
   def update
+
+    if session[:role] == "realtor"
+      @househunter = Househunter.find_by(:id => @inquiry.househunters_id)
+      @user = User.find_by(:id => @househunter.users_id)
+    end
+
     respond_to do |format|
       if @inquiry.update(inquiry_params)
+        if @inquiry.reply.present?
+          UserMailer.welcome_email(@user,@inquiry).deliver_now
+        end
         format.html {redirect_to inquiries_path, notice: 'Inquiry was successfully updated.'}
         format.json {render :show, status: :ok, location: @inquiry}
       else
@@ -83,90 +92,6 @@ class InquiriesController < ApplicationController
       format.json {head :no_content}
     end
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   def check_access(role)
     if role == "realtor"
