@@ -152,7 +152,7 @@ class HousehuntersController < ApplicationController
         str = str + "AND location = '#{params[:location]}' "
       end
     end
-    if params[:area1]==nil || params[:area1]=="" &&  params[:area2]==nil || params[:area2]==""
+    if (params[:area1]==nil || params[:area1]=="" )&&  (params[:area2]==nil || params[:area2]=="")
       str=str+""
     else
       if params[:area1] == nil || params[:area1] == ""
@@ -161,7 +161,7 @@ class HousehuntersController < ApplicationController
         mina=params[:area1]
       end
       if params[:area2] == nil || params[:area2] == ""
-        maxa=9999
+        maxa=99999
       else
         maxa=params[:area2]
       end
@@ -171,7 +171,7 @@ class HousehuntersController < ApplicationController
         str = str + " AND area BETWEEN #{mina} AND #{maxa} "
       end
     end
-    if params[:year_built1]== nil || params[:year_built1]== "" &&  params[:year_built2]==nil || params[:year_built2]==""
+    if (params[:year_built1]== nil || params[:year_built1]== "" )&& ( params[:year_built2]==nil || params[:year_built2]=="")
       str=str+""
     else
       if params[:year_built1] == nil || params[:year_built1] == ""
@@ -180,7 +180,7 @@ class HousehuntersController < ApplicationController
         miny=params[:year_built1]
       end
       if params[:year_built2] == nil || params[:year_built2] == ""
-        maxy=9999
+        maxy=99999
       else
         maxy=params[:year_built2]
       end
@@ -198,7 +198,7 @@ class HousehuntersController < ApplicationController
         str = str + " AND style = '#{params[:style]}' "
       end
     end
-    if params[:list_prize1]==nil || params[:list_prize1]=="" &&  params[:list_prize2]==nil || params[:list_prize2]==""
+    if (params[:list_prize1]==nil || params[:list_prize1]=="" )&&  (params[:list_prize2]==nil || params[:list_prize2]=="")
       str=str+""
     else
       if params[:list_prize1] == nil || params[:list_prize1] == ""
@@ -207,7 +207,7 @@ class HousehuntersController < ApplicationController
         minl=params[:list_prize1]
       end
       if params[:list_prize2] == nil || params[:list_prize2] == ""
-        maxl=9999
+        maxl=99999
       else
         maxl=params[:list_prize2]
       end
@@ -218,7 +218,7 @@ class HousehuntersController < ApplicationController
       end
     end
 
-    if params[:floor_count1]==nil || params[:floor_count1]=="" &&  params[:floor_count2]==nil || params[:floor_count2]==""
+    if (params[:floor_count1]==nil || params[:floor_count1]=="") &&  (params[:floor_count2]==nil || params[:floor_count2]=="")
       str=str+""
     else
       if params[:floor_count1] == nil || params[:floor_count1] == ""
@@ -227,7 +227,7 @@ class HousehuntersController < ApplicationController
         minf=params[:floor_count1]
       end
       if params[:floor_count2] == nil || params[:floor_count2] == ""
-        maxf=9999
+        maxf=99999
       else
         maxf=params[:area2]
       end
@@ -251,14 +251,8 @@ class HousehuntersController < ApplicationController
         str = str + " AND owner_name='#{params[:owner_name]}' "
       end
     end
-    if str.empty?
-      respond_to do |format|
-        format.html { redirect_to @previous_url, notice: 'please enter a field  ' }
-      end
-    else
-      @houses =House.find_by_sql(["SELECT * FROM houses WHERE " +str])
-    end
 
+      @houses =House.find_by_sql(["SELECT * FROM houses WHERE " +str])
   end
 
   def check_access(role)
