@@ -250,7 +250,14 @@ class HousehuntersController < ApplicationController
         str = str + " AND owner_name='#{params[:owner_name]}' "
       end
     end
-    @houses =House.find_by_sql(["SELECT * FROM houses WHERE " +str])
+    if str.empty?
+      respond_to do |format|
+        format.html { redirect_to @previous_url, notice: 'please enter a field  ' }
+      end
+    else
+      @houses =House.find_by_sql(["SELECT * FROM houses WHERE " +str])
+    end
+
   end
 
   def check_access(role)
