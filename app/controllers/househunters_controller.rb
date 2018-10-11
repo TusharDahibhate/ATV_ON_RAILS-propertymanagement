@@ -166,9 +166,9 @@ class HousehuntersController < ApplicationController
         maxa=params[:area2]
       end
       if str.empty?
-        str = str + " area BETWEEN #{mina} AND #{maxa} "
+        str = str + " area > #{mina} AND area<= #{maxa} "
       else
-        str = str + " AND area BETWEEN #{mina} AND #{maxa} "
+        str = str + " AND area > #{mina} AND area<= #{maxa} "
       end
     end
     if (params[:year_built1]== nil || params[:year_built1]== "" )&& ( params[:year_built2]==nil || params[:year_built2]=="")
@@ -185,9 +185,9 @@ class HousehuntersController < ApplicationController
         maxy=params[:year_built2]
       end
       if str.empty?
-        str = str + " year_built BETWEEN #{miny} AND #{maxy} "
+        str = str + " year_built > #{miny} AND year_built <= #{maxy} "
       else
-        str = str + " AND year_built BETWEEN #{miny} AND #{maxy} "
+        str = str + " AND year_built > #{miny} year_built <= #{maxy} "
       end
     end
 
@@ -212,9 +212,9 @@ class HousehuntersController < ApplicationController
         maxl=params[:list_prize2]
       end
       if str.empty?
-        str = str + " list_prize BETWEEN #{minl} AND #{maxl} "
+        str = str + " list_prize > #{minl} AND list_prize <= #{maxl} "
       else
-        str = str + " AND list_prize BETWEEN #{minl} AND #{maxl} "
+        str = str + " AND list_prize > #{minl} AND list_prize <= #{maxl} "
       end
     end
 
@@ -232,9 +232,9 @@ class HousehuntersController < ApplicationController
         maxf=params[:area2]
       end
       if str.empty?
-        str = str + " floor_count BETWEEN #{minf} AND #{maxf} "
+        str = str + " floor_count > #{minf} AND floor_count <= #{maxf} "
       else
-        str = str + " AND floor_count BETWEEN #{minf} AND #{maxf} "
+        str = str + " AND floor_count > #{minf} AND floor_count <= #{maxf} "
       end
     end
     if params[:basement] != nil && params[:basement] != ""
@@ -252,7 +252,7 @@ class HousehuntersController < ApplicationController
       end
     end
 
-      @houses =House.find_by_sql(["SELECT * FROM houses WHERE " +str])
+      @houses =House.select("*").where(str)
   end
 
   def check_access(role)
