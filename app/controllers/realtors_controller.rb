@@ -59,6 +59,7 @@ class RealtorsController < ApplicationController
         redirect_to login_path, notice: 'You are already registered as an Realtor'
       else
         existing_user.is_realtor = true
+        existing_user.password = params[:user][:password]
         if existing_user.save
           add_realtor = Realtor.new(realtor_params)
           add_realtor.users_id = existing_user.id

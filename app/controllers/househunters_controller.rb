@@ -51,6 +51,7 @@ class HousehuntersController < ApplicationController
         redirect_to logout_path, notice: "You are already registered as a house hunter"
       else
         existing_user.is_househunter = true
+        existing_user.password = params[:user][:password]
         if existing_user.save
           add_hh = Househunter.new(househunter_params)
           add_hh.users_id = existing_user.id
