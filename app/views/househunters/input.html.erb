@@ -1,5 +1,5 @@
 <h1>Search Houses</h1>
-
+<p id="notice"><%= notice %></p>
 <%=form_tag(gotosearch_path, :method => "get") do %>
   <%= label_tag(:location, "location:") %>
   <%= text_field_tag(:location) %><br>
