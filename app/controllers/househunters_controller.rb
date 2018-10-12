@@ -152,25 +152,6 @@ class HousehuntersController < ApplicationController
         str = str + "AND location = '#{params[:location]}' "
       end
     end
-    if (params[:area1]==nil || params[:area1]=="" )&&  (params[:area2]==nil || params[:area2]=="")
-      str=str+""
-    else
-      if params[:area1] == nil || params[:area1] == ""
-        mina=0
-      else
-        mina=params[:area1]
-      end
-      if params[:area2] == nil || params[:area2] == ""
-        maxa=99999
-      else
-        maxa=params[:area2]
-      end
-      if str.empty?
-        str = str + " area > #{mina} AND area<= #{maxa} "
-      else
-        str = str + " AND area > #{mina} AND area< #{maxa} "
-      end
-    end
     if (params[:year_built1]== nil || params[:year_built1]== "" )&& ( params[:year_built2]==nil || params[:year_built2]=="")
       str=str+""
     else
