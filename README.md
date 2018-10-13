@@ -6,3 +6,12 @@ Few things to note:
     Letting admin create houses causes instability with other operations (like: Where should interested list be shown? and similar functionalities)
 2. Interest in house and inquiries can be posted by house hunter while looking at an individual house. He can opt out of being interested in the house from same page.
 3. If a user registers for househunter and realtor with same email but different passwords, the latest password entered will be used.
+
+
+Edge Cases:
+
+1. On deleting a user, the corresponding househunter and realtor accounts are deleted.
+2. On deleting a company, corresponding houses are deleted and realtors with that company have their company set to null
+3. on deleting a househunter or house, the corresponding entry in interest list is deleted.
+4. On deleting househunter or house, corresponding inquiry is deleted
+
