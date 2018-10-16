@@ -9,6 +9,7 @@ Few things to note:
     Letting admin create houses causes instability with other operations (like: Where should interested list be shown? and similar functionalities)
 2. Interest in house and inquiries can be posted by house hunter while looking at an individual house. He can opt out of being interested in the house from same page.
 3. If a user registers for househunter and realtor with same email but different passwords, the latest password entered will be used.
+4. The relationships are implemented, even if some of them are missing from model files. Please refer schema.rb.
 
 
 Edge Cases:
